@@ -1,0 +1,14 @@
+<ngx-extended-pdf-viewer *ngIf="fileData" 
+    [src]="fileData" 
+    [useBrowserLocale]="true" 
+    [textLayer]="true"
+    [showHandToolButton]="true" 
+    [showPresentationModeButton]="true" 
+    [showDownloadButton]="false">
+</ngx-extended-pdf-viewer>
+<div class="d-flex align-items-center justify-content-center" *ngIf="!fileData" style="height:540px">
+    <div>
+        <mat-spinner></mat-spinner>
+        <h3>Dowload file... {{progress}} %</h3>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/home" class="d-flex align-item-center">
+            <mat-icon>dashboard</mat-icon><span class="d-inline-block ms-2 pt-1">Dashboard</span>
+        </a>
+    </li>
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/book/all" class="d-flex align-item-center">
+            <mat-icon>local_library</mat-icon><span class="d-inline-block ms-2 pt-1">Books</span>
+        </a>
+    </li>
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/vocabulary/all" class="d-flex align-item-center">
+            <mat-icon>translate</mat-icon><span class="d-inline-block ms-2 pt-1">Vocabulary</span>
+        </a>
+    </li>
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/tags/all" class="d-flex align-item-center">
+            <mat-icon>category</mat-icon><span class="d-inline-block ms-2 pt-1">Tags</span>
+        </a>
+    </li>
+    <li class="list-group-item bg-transparent ">
+        <a routerLink="/bookmark/all" class="d-flex align-item-center">
+            <mat-icon>bookmark</mat-icon>
+            <span class="d-inline-block ms-2 pt-1">Bookmarks</span>
+        </a>
+    </li>
+
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/drive/all" class="d-flex align-item-center">
+            <mat-icon>storage</mat-icon>
+            <span class="d-inline-block ms-2 pt-1">Drive</span>
+        </a>
+    </li>
+    <li class="list-group-item bg-transparent">
+        <a routerLink="/members/all" class="d-flex align-item-center">
+            <mat-icon>people</mat-icon>
+            <span class="d-inline-block ms-2 pt-1">Members</span>
+        </a>
+    </li>
+</ul>
+
+<!-- nav>
+    <ng-container *ngFor="let route of currentRoutes">
+       <ces-button *ngIf='route.data.show && !route.data.showChildren' ngClass='nav-button' size='small' [routerLink]="[route.path]"
+  [title]="route.data.title" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+  true}" >
+      <ces-svgs [type]="route.data.icon" class="icon"></ces-svgs><br>{{ route.data.navLabel }} 
+       </ces-button>
+      <ces-button *ngIf='route.data.show && route.data.showChildren' ngClass='nav-button' size='small' [routerLink]="[route.path]" [title]="route.data.title" routerLinkActive="active">
+      <ces-svgs [type]="route.data.icon" class="icon"></ces-svgs><br>
+       {{ route.data.navLabel }} 
+       </ces-button>
+    </ng-container>
+  </nav -->

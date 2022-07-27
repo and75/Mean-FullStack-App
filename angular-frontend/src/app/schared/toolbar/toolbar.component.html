@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row align-items-center px-2 py-2">
+        <div class="col-2">
+            <img src="../../../assets/img/logo-dark.png">
+        </div>
+        <div class="col-7">
+            <form class="d-flex">
+                <div class="input-group">
+                    <input class="form-control bg-search text-white" type="search" placeholder="Search"
+                        aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <div class="col-3 text-end">
+            <div class="btn-group" *ngIf="loggedInUser">
+                <button mat-button #tooltip="matTooltip" matTooltip="Go to your page" >
+                    <mat-icon aria-hidden="false" aria-label="Account icon">account_circle</mat-icon> 
+                    {{loggedInUser.name}}
+                </button>
+                <button mat-button class="ms-1" #tooltip="matTooltip" matTooltip="Notifications">
+                    <mat-icon aria-hidden="false" aria-label="Notifications icon">notifications</mat-icon>
+                </button>
+                <button mat-raised-button color="accent" class="ms-1" #tooltip="matTooltip" matTooltip="Logout" (click)="logOut()">
+                    <mat-icon aria-hidden="false" aria-label="Account icon">logout</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.comment-block{
+    .comment-text{
+        background-color: #F2F2F2;
+        padding: 9px 18px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #8888;
+        width: 100%;
+    }
+    .comment-icon{
+        font-size: 36px;
+        width: 50px;
+        height: 36px;
+    }
+    .comment-footer{
+        margin-top: 6px;
+
+        .comment-action{
+            width: 63%;
+            color: #7e7e7e;
+            font-size: 0.8rem;
+
+            .span{
+                cursor: pointer;
+            }
+        }
+        .comment-date{
+            flex:auto;
+        }
+    }
+}

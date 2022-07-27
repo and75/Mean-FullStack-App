@@ -1,0 +1,55 @@
+<mat-card>
+        <div style="display: flex; width: 100%;">
+            <div style="width:50px">
+                <mat-icon style="font-size: 36px;width: 36px; height: 36px;">comment</mat-icon>
+            </div>
+            <div style="flex:auto">
+                <h2 class="m-0 p-0">Comments</h2>
+            </div>
+        </div>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form class="book-form py-3" [formGroup]="form" novalidate (ngModel)="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <mat-icon style="
+                            font-size: 36px;
+                            width: 50px;
+                            height: 36px;" color="accent">account_circle</mat-icon>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Write your comment...</mat-label>
+                                <textarea matInput formControlName="text" id="text"></textarea>
+                                <mat-hint *ngIf="submitted && f.text.errors" color="warn">
+                                    <div class="text-warn" *ngFor="let item of f.text.errors | keyvalue">
+                                        {{logError(item.key, item.value)}}
+                                    </div>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex align-items-end">
+                        <div class="d-flex w-100">
+                            <div style="width: 90%;"></div>
+                            <div style="flex:auto">
+                                <button mat-flat-button color="accent"  (click)="save()">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="d-flex comment-block"  *ngFor="let comment of data">
+            <mat-icon class="comment-icon">account_circle</mat-icon>
+            <div class="comment-text">
+                <div><b>{{comment.owner.firstName}} {{comment.owner.lastName}}</b> {{comment.text}}</div>
+                <div class="comment-footer d-flex">
+                    <div class="comment-action" color="disable"><span class="d-inline" (click)="delete(comment)">delete</span></div>
+                    <div class="comment-date text-end"><small color="disable">{{comment.created | date:'MMM d, y, h:mm:ss a'}}</small> </div>
+                </div>
+            </div>
+        </div>
+        
+    </mat-card-content>
+</mat-card>

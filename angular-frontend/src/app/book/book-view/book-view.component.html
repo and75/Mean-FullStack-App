@@ -1,0 +1,96 @@
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="row py-3 px-2">
+        <div class="col-lg-2">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-lg-10">
+            <div class="row" *ngIf="data">
+                <div class="col-lg-12 ">
+                    <mat-card>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width:70px">
+                                <mat-icon style="font-size: 47px;">menu_book</mat-icon>
+                            </div>
+                            <div style="flex:auto">
+                                <h1 class="m-0 p-0">{{data.title}}</h1>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <div class="row mt-4 mb-5">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>person</mat-icon><span class="d-inline-block me-2">Author</span>
+                                        <b>{{data.author}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>translate</mat-icon><span
+                                            class="d-inline-block me-2">Lang</span><b>{{data.lang}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>content_paste</mat-icon><span class="d-inline-block me-2">Pages</span>
+                                        <b>{{data.pages}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                        <div style="margin:0 -15px">
+                            <mat-tab-group animationDuration="0ms" color="accent"
+                                (selectedTabChange)="activateTab($event.index)">
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon class="me-2">picture_as_pdf</mat-icon>
+                                        Pdf
+                                    </ng-template>
+                                    <div class="p-3 pt-4 h-100">
+                                        <app-file-viewer [data]="data.pdf"></app-file-viewer>
+                                    </div>
+                                </mat-tab>
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon class="me-2">text_fields</mat-icon>
+                                        Pages
+                                    </ng-template>
+                                    <div class="p-3 pt-4 h-100">Content page</div>
+                                </mat-tab>
+                                <mat-tab>
+                                    <ng-template mat-tab-label>
+                                        <mat-icon class="me-2">analytics</mat-icon>
+                                        Stats
+                                    </ng-template>
+                                    <div class="p-3 pt-4 h-100">Content Stats</div>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <app-comment-view [relObject]="data._id" [relType]="'book'"></app-comment-view>
+                </div>
+                <div class="col-lg-4">
+                    <mat-card class="member-detail-card">
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                            <mat-card-title>Book Contributors</mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-content>
+
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

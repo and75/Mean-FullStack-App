@@ -1,0 +1,27 @@
+<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
+    <mat-icon>add</mat-icon>
+    <div class="m-0 ms-2" style="flex:auto">Add bookmark</div>
+    <button mat-icon-button color="basic" style="align-self:flex-end" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+<form class="book-form" [formGroup]="form" novalidate (ngModel)="form">
+    <mat-dialog-content>
+        <div class="form-body">
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Content</mat-label>
+                <textarea matInput formControlName="content" id="content"></textarea>
+                <mat-hint *ngIf="submitted && f.content.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.content.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+            
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions style="justify-content: flex-end;">
+        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
+        <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button>
+    </mat-dialog-actions>
+</form>

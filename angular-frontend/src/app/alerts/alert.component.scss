@@ -1,0 +1,63 @@
+﻿
+.shadow-alert {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0) !important;
+}
+.bg-alert {
+    --bs-bg-opacity: 1;
+    background-color: rgb(63 68 72) !important;
+}
+.spinner-border {
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.7rem;
+    vertical-align: -1em;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: 0.75s linear infinite spinner-border;
+}
+.button-g {
+    align-items: center;
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    outline: none;
+    position: relative;
+    z-index: 0;
+    -webkit-font-smoothing: antialiased;
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0 7px;
+    white-space: pre-wrap;
+}
+
+/* ::before, which will become the hover effect */
+.button-g::before {
+        content: '';
+    display: block;
+    opacity: 0;
+    position: absolute;
+    transition-duration: .15s;
+    transition-timing-function: cubic-bezier(0.4,0.0,0.2,1);
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: #f8f9fa;
+    border-radius: 50%;
+    transform: scale(0);
+    transition-property: transform,opacity;
+}
+.button-g:hover::before {
+    opacity: .06;
+    transform: scale(1);
+}
+
+.button-g i {
+    font-size: 1.7rem;
+}
+.alert.spinner .menu-action{
+    display: none;
+}

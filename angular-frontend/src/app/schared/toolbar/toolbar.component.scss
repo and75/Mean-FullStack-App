@@ -1,0 +1,17 @@
+.btn-search,
+.bg-search{
+    background-color: #8080804f;
+    color:#000
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* Firefox */
+  color: hsl(0, 0%, 3%);
+}
+input:focus{
+    outline: none !important;
+    box-shadow: 1px 2px 14px #6c757d !important;
+    background-color: #fff !important;
+    transition: auto !important;
+    color:rgb(35, 35, 35) !important;
+}

@@ -1,0 +1,11 @@
+﻿
+<div *ngFor="let alert of alerts" class="{{cssClass(alert)}}" >
+    <div class="d-flex flex-nowrap">
+        <div class=" align-self-center"><span class="{{cssBadgeClass(alert)}}">{{alertText(alert)}}</span></div>
+        <div class=" align-self-center flex-fill"><span class="small" [innerHTML]="alert.message"></span></div>
+        <div class="align-sel-center" *ngIf="alert.spinner"><div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+        <div class=" align-self-center menu-action"><div class="button-g" (click)="removeAlert(alert)"><i class="bi-x"></i></div></div>
+      </div>
+</div>

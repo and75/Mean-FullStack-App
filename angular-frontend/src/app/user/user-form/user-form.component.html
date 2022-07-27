@@ -1,0 +1,111 @@
+<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
+    <mat-icon>person_add</mat-icon>
+    <div class="m-0 ms-2" style="flex:auto">Add member</div>
+    <button mat-icon-button color="basic" style="align-self:flex-end"  (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+<form class="user-form" [formGroup]="userForm" novalidate (ngModel)="userForm">
+    <mat-dialog-content>
+        <div class="form-body">
+            <div class="row mt-4">
+                <div class="col-6">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" id="firstName">
+                        <mat-icon matSuffix>badge</mat-icon>
+                        <mat-hint *ngIf="submitted && f.firstName.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of f.firstName.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" id="lastName">
+                        <mat-icon matSuffix>badge</mat-icon>
+                        <mat-hint *ngIf="submitted && f.lastName.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of f.lastName.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Istitution</mat-label>
+                <input matInput formControlName="istitution" id="istitution">
+                <mat-icon matSuffix>school</mat-icon>
+                <mat-hint *ngIf="submitted && f.istitution.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.istitution.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Presentation</mat-label>
+                <textarea matInput formControlName="presentation" id="presentation"></textarea>
+                <mat-hint *ngIf="submitted && f.presentation.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.presentation.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" id="email">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-hint *ngIf="submitted && f.email.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.email.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" id="password">
+                        <mat-icon matSuffix>password</mat-icon>
+                        <mat-hint *ngIf="submitted && f.password.errors">
+                            <div class="text-warn" *ngFor="let item of f.password.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Password confirm</mat-label>
+                        <input matInput type="password" formControlName="passwordConfirm" id="passwordConfirm">
+                        <mat-icon matSuffix>password</mat-icon>
+                        <mat-hint *ngIf="submitted && f.passwordConfirm.errors">
+                            <div class="text-warn" *ngFor="let item of f.passwordConfirm.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role" id="role">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let role of roles" [value]="role">
+                        {{role}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions style="justify-content: flex-end;">
+        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
+        <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button>
+    </mat-dialog-actions>
+</form>

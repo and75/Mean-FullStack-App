@@ -1,0 +1,29 @@
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="card text-dark bg-white mb-3 border-top p-4" style="width: 25rem; ">
+        <div class="card-header bg-white border-bottom-0 mb-4 text-center">
+            <img src="../../assets/img/logo-dark.png ">
+            <p class="m-0"><small>Please enter your user information.</small></p>
+        </div>
+        <div class="card-body ">
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+                <div class="mb-3">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Email " [(ngModel)]="formLogin.email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" id="password" name="password" placeholder="Password " class="form-control" [(ngModel)]="formLogin.password" required>
+                </div>
+                <div class="mb-5">
+                    <div class="form-check ">
+                        <input class="form-check-input " type="checkbox " value=" " id="flexCheckDefault ">
+                        <label class="form-check-label " for="flexCheckDefault ">
+                          Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type=" button " class="btn btn-primary w-100 " [disabled]="!loginForm.form.valid" >Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

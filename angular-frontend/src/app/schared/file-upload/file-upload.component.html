@@ -1,0 +1,33 @@
+<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
+    <mat-icon>upload_file</mat-icon>
+    <div class="m-0 ms-2" style="flex:auto">File upload</div>
+    <button mat-icon-button color="basic" style="align-self:flex-end" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+<mat-dialog-content class="file-upload-content">
+    <mat-form-field>
+        <mat-label>Select file</mat-label>
+        <input matInput [value]="fileName" hidden />
+        <input type="file" id="fileInput" (change)="selectFile($event)" name="fileInput" />
+    </mat-form-field>
+    <div class="file-upload-info" *ngIf="currentFile">
+
+        <mat-list role="list" class="mb-3">
+            <mat-list-item role="listitem">Name : {{fileName}}</mat-list-item>
+            <mat-list-item role="listitem">Type : {{fileType}}</mat-list-item>
+            <mat-list-item role="listitem">Size : {{fileSize}}</mat-list-item>
+        </mat-list>
+
+        <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+        <span class="progress rounded-0">{{ progress }}%</span>
+        <div *ngIf="message" class="message mt-3">
+            {{ message }}
+        </div>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions style="justify-content: flex-end;">
+    <button mat-raised-button type="reset" color="basic" class="me-2" (click)="close()">Reset</button>
+    <button mat-raised-button type="submit" color="accent" [disabled]="!currentFile" (click)="upload()">Upload</button>
+</mat-dialog-actions>

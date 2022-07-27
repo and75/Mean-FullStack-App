@@ -1,0 +1,11 @@
+<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
+    <mat-icon>help_outline</mat-icon>
+    <div class="m-0 ms-2" style="flex:auto">Confirmation request</div>
+</h2>
+<mat-dialog-content>
+        <p [innerHtml]="data" style="white-space: pre-line;"></p>
+</mat-dialog-content>
+<mat-dialog-actions style="justify-content: flex-end;">
+        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="confirm(true)">Confirm</button>
+        <button mat-raised-button type="submit" color="accent" (click)="confirm(false)">Undo</button>
+</mat-dialog-actions>

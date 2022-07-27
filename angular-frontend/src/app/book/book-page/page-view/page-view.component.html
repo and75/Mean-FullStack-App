@@ -1,0 +1,54 @@
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="row py-3 px-2">
+        <div class="col-lg-2">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-lg-10">
+            <div class="row" *ngIf="data">
+                <div class="col-lg-12 ">
+                    <mat-card>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width:70px">
+                                <mat-icon style="font-size: 47px;">menu_book</mat-icon>
+                            </div>
+                            <div style="flex:auto">
+                                <h1 class="m-0 p-0">{{data.title}}</h1>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <div class="row mt-4 mb-5">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>person</mat-icon><span class="d-inline-block me-2">Author</span>
+                                        <b>{{data.author}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>translate</mat-icon><span
+                                            class="d-inline-block me-2">Lang</span><b>{{data.lang}}</b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>content_paste</mat-icon><span class="d-inline-block me-2">Pages</span>
+                                        <b>{{data.pages}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <app-comment-view [relObject]="data._id" [relType]="'book'"></app-comment-view>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
