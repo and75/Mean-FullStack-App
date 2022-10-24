@@ -1,3 +1,9 @@
+/**
+ * Proteus-app
+ * Node/MongoDb/Angular/Angular Material - Stack
+ * by Andrea Porcella 2022
+ */
+
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/book.model');
@@ -5,13 +11,14 @@ const { autenticateToken } = require('../middleware/authJwt');
 const { now } = require('../db');
 const coreLib = require('./../lib/core.lib');
 
-
 // retrieve all records from database
 router.get('/', autenticateToken, async (req, res) => {
     try {
         const books = await Book.find().sort('-updated')
+            .populate('authors')
             .populate('owner')
-        //.populate({path:'tags', model:'tag', select:'label'});
+            .populate('digitalSource')
+            .populate({ path: 'tags', model: 'tag', select: 'label' });
         res.json({ succes: true, mess: "Found " + books.length, payload: { data: books } })
     } catch (err) {
         console.log(err);
@@ -32,7 +39,7 @@ router.post('/add', autenticateToken, async (req, res) => {
         reference: req.body.reference,
         notes: req.body.notes,
         source: req.body.source,
-        tags: req.body?.tags,
+        digitalSource: req.body.digitalSource,
         protectedByC: req.body.protectedByC,
         accessId: req.body.accessId,
         created: dateNow,
@@ -40,94 +47,71 @@ router.post('/add', autenticateToken, async (req, res) => {
         owner: req.owner._id,
     });
 
-    try {
-        const savedBook = await book.save();
-        res.json({ "success": true, mess: 'The book was created successfully', payload: { data: savedBook } });
-    } catch (err) {
-        if (err.keyPattern?.email && err.code == "11000") {
-            res.status(401).json({ "success": false, mess: 'The email entered has already been used', payload: { error: err.code } });
-            return;
-        } else {
-            console.log('error', err);
-        }
-    }
+    book.save()
+    .then(savedDoc => {
+        return coreLib.authorStore(req.body.authors, req.owner._id, savedDoc, true);
+    }).then(savedDoc=>{
+        return coreLib.tagStore(req.body.tags, req.owner._id, savedDoc, 'book', true);
+    }).then(savedDoc=>{
+        return savedDoc.save();
+    })
+    .then(savedDoc => {
+        return coreLib.registerActivity(savedDoc, 'book', 'updated', req.owner._id)
+    })
+    .then(savedDoc => {
+        res.json({ "success": true, mess: 'The book was created successfully', payload: { data: savedDoc } });
+    }).catch((err) => {
+        console.log(err);
+        res.json({ succes: false, mess: "Error creating Book \n" + err, payload: { error: err } });
+    });
+
 });
 
 // retrieve an object for specific id
 router.get('/:id', autenticateToken, async (req, res) => {
     try {
-        const book = await Book.findById(req.params.id).populate('owner').populate('pdf').exec();
+        const book = await Book.findById(req.params.id)
+            .populate('authors')
+            .populate('owner')
+            .populate('pdf')
+            .populate('digitalSource')
+            .populate({ path: 'tags', model: 'tag', select: 'label' });
         res.json({ succes: true, mess: "The book has been loaded!", payload: { data: book } });
     } catch (err) {
-        res.json({ succes: false, mess: "Error loading book!", payload: { error: err } });
+        res.json({ succes: false, mess: "Error loading book!", payload: {error: err} });
     }
 });
 
 // update a specific document 
 router.patch('/:id', autenticateToken, async (req, res) => {
-    try {
-        const dateNow = Date.now();
-        /*const book = await Book.findById(req.params.id);
-        book.title= req.body.title;
-        book.author= req.body.author;
-        book.lang=req.body.lang;
-        book.pages= req.body.pages;
-        book.abstract= req.body.abstract;
-        book.firstEdition= req.body.firstEdition;
-        book.currentEdition= req.body.currentEdition;
-        book.reference= req.body.reference;
-        book.notes=req.body.notes;
-        book.source=req.body.source;
-        book.tags=req.body.tags;
-        book.protectedByC=req.body.protectedByC;
-        book.accessId=req.body.accessId;
-        book.updated= dateNow;
-        const updatedBook = await book.save();*/
 
-        const updatedBook = await Book.updateOne({ _id: req.params.id }, {
-            $set: {
-                title: req.body.title,
-                author: req.body.author,
-                pages: req.body.pages,
-                lang: req.body.lang,
-                abstract: req.body.abstract,
-                firstEdition: req.body.firstEdition,
-                currentEdition: req.body.currentEdition,
-                reference: req.body.reference,
-                notes: req.body.notes,
-                source: req.body.source,
-                protectedByC: req.body.protectedByC,
-                tags: req.body.tags,
-                accesId: req.body.accessId,
-                updated: dateNow,
-            }
-        });
-
-        //Store Tags
-        coreLib.tagStore(updatedBook).then(async (res) => {
-            const tags = res.map(x => x._id.toString());
-        }).catch((err) => {
-            console.error(err);
-        })
-
-        //Set Activity
-        let options = {
-            action: 'update',
-            object: updatedBook._id,
-            objModel: 'book',
-            subject: req.owner._id
-        }
-        coreLib.registerActivity(options).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.error(err)
-            }
-        );
-        
-        res.json({ succes: true, mess: "The book has been successfully updated", payload: { data: updatedBook } });
-    } catch (err) {
-        res.json({ succes: false, mess: "Error updating data" + err, payload: { error: err } });
-    }
+    const dateNow = Date.now();
+    const book = await Book.findById(req.params.id);
+    book.title = req.body.title;
+    book.author = req.body.author;
+    book.authors = await coreLib.authorStore(req.body.authors, req.owner._id, book);
+    //console.log('BookRoute Authors : ', book.authors)
+    book.lang = req.body.lang;
+    book.pages = req.body.pages;
+    book.abstract = req.body.abstract;
+    book.firstEdition = req.body.firstEdition;
+    book.currentEdition = req.body.currentEdition;
+    book.reference = req.body.reference;
+    book.notes = req.body.notes;
+    book.source = req.body.source;
+    book.digitalSource = req.body.digitalSource;
+    book.tags = await coreLib.tagStore(req.body.tags, req.owner._id, book, 'book');
+    book.protectedByC = req.body.protectedByC;
+    book.accessId = req.body.accessId;
+    book.updated = dateNow;
+    book.save().then(savedDoc => {
+        return coreLib.registerActivity('updated', savedDoc, 'book',req.owner._id)
+    }).then(doc => {
+        res.json({ succes: true, mess: "The book has been successfully updated", payload: { data: doc } });
+    }).catch((err) => {
+        console.log(err);
+        res.json({ succes: false, mess: "Error updating book data" + err, payload: { error: err } });
+    });
 });
 
 // delete specific document 

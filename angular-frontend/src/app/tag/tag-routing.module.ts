@@ -4,16 +4,18 @@
  * by Andrea Porcella 2022
  */
 
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../auth-guard.service';
 import { TagListComponent } from "./tag-list/tag-list.component";
+import { TagViewComponent } from './tag-view/tag-view.component';
 const TagRoutes: Routes = [
   {
-    path: 'tags',
+    path: 'tag',
     canActivate: [AuthGuardService],
     children: [
-      { path: 'all', component: TagListComponent }
+      { path: 'all', component: TagListComponent },
+      { path: 'view/:id', component : TagViewComponent}
     ]
   }
 ];

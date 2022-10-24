@@ -1,0 +1,71 @@
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="row py-3 px-2">
+        <div class="col-lg-2">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-lg-10" *ngIf="data">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <mat-card>
+                        <div class="pb-3" style="display: flex; align-items: center;">
+                            <div style="width:70px">
+                                <mat-icon style="font-size: 47px;">badge</mat-icon>
+                            </div>
+                            <div style="flex:auto">
+                                <h1 class="m-0 p-0">{{data.fullname}}</h1>
+                            </div>
+                            <div style="width:200px text-right">
+                                <button mat-raised-button color="accent" (click)="edit(data)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <div class="row mt-4 mb-2">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>today</mat-icon><span class="d-inline-block me-2">Birth</span>
+                                        <b>{{data.birthDate.place}} {{data.birthDate.year}}, {{data.birthDate.century}}°
+                                            century</b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <mat-icon>event</mat-icon><span class="d-inline-block me-2">Death</span>
+                                        <b>{{data.deathDate.place}}, {{data.deathDate.year}},
+                                            {{data.deathDate.century}}° century</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " *ngIf="data.tags">
+                                <div class="col-12 my-3">
+                                    <mat-chip-list #chipList>
+                                        <mat-chip *ngFor="let tag of data.tags">{{tag.label}}</mat-chip>
+                                    </mat-chip-list>
+                                </div>
+                            </div>
+                            <div class="row " *ngIf="data.biography">
+                                <mat-divider></mat-divider>
+                                <div class="col-12 mt-3">
+                                    {{data.biography}}
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <app-owner-block [data]="data"></app-owner-block>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <app-comment-view [relObject]="data._id" [relType]="'author'"></app-comment-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -83,6 +83,10 @@
                                     <mat-icon>more_vert</mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu">
+                                    <button mat-menu-item routerLink="/vocabulary/view/{{row._id}}">
+                                        <mat-icon>visibility</mat-icon>
+                                        <span>View term</span>
+                                    </button>
                                     <button mat-menu-item (click)="edit(row)">
                                         <mat-icon>edit</mat-icon>
                                         <span>Edit term</span>

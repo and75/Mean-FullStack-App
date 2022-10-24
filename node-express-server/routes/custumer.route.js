@@ -1,3 +1,9 @@
+/**
+ * Proteus-app
+ * Node/MongoDb/Angular/Angular Material - Stack
+ * by Andrea Porcella 2022
+ */
+
 const express = require('express');
 const router = express.Router();
 const Customer = require('../models/customer.model');
@@ -45,7 +51,7 @@ router.post('/add', autenticateToken, async (req, res) => {
 router.get('/:id', autenticateToken, async (req, res) => {
     try {
         const customer = await Customer.findById(req.params.id);
-        res.json({succes: true, mess: "The user has been creatred!", payload: {data:success}});
+        res.json({succes: true, mess: "The user has been creatred!", payload: {data:customer}});
     } catch (err) {
         res.json({succes: false, mess: "Error creating member!", payload: {error:err}});
     }

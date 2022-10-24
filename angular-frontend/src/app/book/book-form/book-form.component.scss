@@ -1,9 +1,14 @@
 .book-form {
-    min-width: 150px;
-    max-width: 610px;
-    width: 100%;
+  min-width: 150px;
+  max-width: 610px;
+  width: 100%;
+
+  textarea{
+    min-height: 120px;
+    line-height: 1.3rem;
   }
-  
-  .book-form-full-width {
-    width: 100%;
-  }
+}
+
+.book-form-full-width {
+  width: 100%;
+}

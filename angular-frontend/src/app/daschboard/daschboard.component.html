@@ -9,7 +9,7 @@
                 <div class="app-table-action" style="display: flex;">
                     <mat-card-header style="flex:auto">
                         <div mat-card-avatar>
-                            <mat-icon style="font-size: 47px;">dashboard</mat-icon>
+                            <mat-icon style="font-size: 47px">dashboard</mat-icon>
                         </div>
                         <mat-card-title>Dashboard</mat-card-title>
                         <mat-card-subtitle>Welcome to the proteus app dashboard</mat-card-subtitle>
@@ -19,6 +19,15 @@
                     </div>
                 </div>
             </mat-card>
+            <div class="row">
+                <div class="col-7">
+                    <app-activity-view [filter]="filterActivity" [limit]="10"></app-activity-view>
+                </div>
+                <div class="col-5">
+                    <app-chart-pie></app-chart-pie>
+                </div>
+            </div>
+           
         </div>
     </div>
 </div>

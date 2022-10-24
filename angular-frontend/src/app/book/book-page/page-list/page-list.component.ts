@@ -45,7 +45,6 @@ export class PageListComponent implements OnInit,OnChanges {
 
   getData() {
     this.pageService.getPages(this.bookId).subscribe((res:any) => {
-      console.log('getBookPages', res);
       if (res.succes == true) {
         this.page = res.payload.data;
         this.dataSource = new MatTableDataSource(this.page);
@@ -68,7 +67,6 @@ export class PageListComponent implements OnInit,OnChanges {
     addDialog.afterClosed().subscribe(result => {
       if (result) {
         this.pageService.addPage(this.bookId, result.form).subscribe(res => {
-          console.log(res);
           if (res.success) {
             this.getData();
             this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
@@ -99,7 +97,6 @@ export class PageListComponent implements OnInit,OnChanges {
   }
 
   delete(row: any) {
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the user: ${row.firstName} ${row.lastName}?`
     });

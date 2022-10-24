@@ -7,14 +7,12 @@ import { TagListComponent } from './tag-list/tag-list.component';
 import { TagViewComponent } from './tag-view/tag-view.component';
 import { TagFormComponent } from './tag-form/tag-form.component';
 import { TagService } from './tag.service';
-import { TagInputComponent } from './tag-input/tag-input.component';
 
 @NgModule({
   declarations: [
     TagListComponent,
     TagViewComponent,
-    TagFormComponent,
-    TagInputComponent
+    TagFormComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +20,7 @@ import { TagInputComponent } from './tag-input/tag-input.component';
     FormsModule, ReactiveFormsModule,
     TagRoutingModule
   ],
-  exports:[TagInputComponent],
+  exports:[],
   providers: [TagService]
 })
 export class TagModule { }

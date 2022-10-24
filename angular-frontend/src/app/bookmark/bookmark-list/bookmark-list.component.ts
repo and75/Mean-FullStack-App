@@ -47,7 +47,6 @@ export class BookmarkListComponent implements OnInit {
 
   getData() {
     this.service.getAll().subscribe((res:any) => {
-      console.log(res);
       if (res.succes == true) {
         this.bookmark = res.payload.data;
         this.dataSource = new MatTableDataSource(this.bookmark);
@@ -70,7 +69,6 @@ export class BookmarkListComponent implements OnInit {
     addDialog.afterClosed().subscribe(result => {
       if (result) {
         this.service.add(result.form).subscribe(res => {
-          console.log(res);
           if (res.success) {
             this.getData();
             this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
@@ -101,7 +99,6 @@ export class BookmarkListComponent implements OnInit {
   }
 
   delete(row: any) {
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the bookmark:\n\n ${row.label} \n ${row.url}?`
     });

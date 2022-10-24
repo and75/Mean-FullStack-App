@@ -24,9 +24,7 @@ export class FileUploadComponent implements OnInit {
     private sharedService: SharedService,
     private alertService:AlertService,
     @Inject(MAT_DIALOG_DATA) public data: string,
-    private dialogRef: MatDialogRef<FileUploadComponent>) {
-      console.log(this.data)
-     }
+    private dialogRef: MatDialogRef<FileUploadComponent>) {}
 
   ngOnInit() {
 
@@ -51,7 +49,6 @@ export class FileUploadComponent implements OnInit {
       this.fileName = this.currentFile.name;
       this.fileSize = this.formatBytes(this.currentFile.size);
       this.fileType = this.currentFile.type;
-      console.log(this.currentFile)
     }
   }
 
@@ -74,7 +71,6 @@ export class FileUploadComponent implements OnInit {
           }
         },
         (err: any) => {
-          console.log(err);
           this.progress = 0;
           if (err.error && err.error.message) {
             this.message = err.error.message;

@@ -48,7 +48,6 @@ export class TagListComponent implements OnInit,AfterViewInit {
 
   getData() {
     this.service.getAll().subscribe((res:any) => {
-      console.log(res);
       if (res.succes == true) {
         this.tag = res.payload.data;
         this.dataSource = new MatTableDataSource(this.tag);
@@ -71,7 +70,6 @@ export class TagListComponent implements OnInit,AfterViewInit {
     addDialog.afterClosed().subscribe(result => {
       if (result) {
         this.service.add(result.form).subscribe(res => {
-          console.log(res);
           if (res.success) {
             this.getData();
             this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
@@ -86,8 +84,8 @@ export class TagListComponent implements OnInit,AfterViewInit {
   edit(row) {
     const addDialog = this.dialog.open(TagFormComponent, {
       data: row,
-      width: '800px',
-      height: '600px'
+      width: '600px',
+      height: '300px'
     });
     addDialog.afterClosed().subscribe(result => {
       if (result) {
@@ -104,7 +102,6 @@ export class TagListComponent implements OnInit,AfterViewInit {
   }
 
   delete(row: any) {
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the tag:\n\n ${row.label} \n ${row.url}?`
     });

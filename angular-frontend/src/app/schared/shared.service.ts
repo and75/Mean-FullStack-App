@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEvent, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable, shareReplay, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { Comment } from '../_models/comment';
+import { Activity} from '../_models/activity'
 
 
 @Injectable({
@@ -58,20 +59,19 @@ export class SharedService {
   commentGetAll(relObj:string): Observable<Comment[]> {
     const url = `${this.ApiServiceUrl}comment/for/${relObj}`;
     return this.http.get<Comment[]>(url, {headers:this.Header}).pipe(
-      tap(_ => this.log(`fetched getBooks (all)`)),
-      catchError(this.handleError('getBooks (all)', []))
+      tap(_ => this.log(`fetched  SharedModule -> commentGetAll`)),
+      catchError(this.handleError('Error SharedModule -> commentGetAll', []))
     );
   } 
 
   /** Add comment */
   commentAdd(data): Observable<any> {
-    console.log(data);
     const ApiUrl = `${this.ApiServiceUrl}comment/add`;
     //var formData: any = new FormData();
     return this.http.post<Comment>(ApiUrl, data, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched commentAdd `)),
-        catchError(this.handleError<any>(`commentAdd`))
+        tap(_ => this.log(`fetched SharedModule -> commentAdd `)),
+        catchError(this.handleError<any>(`Error SharedModule -> commentAdd`))
       );
   }
 
@@ -81,9 +81,9 @@ export class SharedService {
     //var formData: any = new FormData();
     return this.http.patch<Comment>(ApiUrl, data, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched commentUpdate`)),
+        tap(_ => this.log(`fetched SharedModule -> commentUpdate`)),
         catchError(
-          this.handleError<any>(`commentUpdate`)
+          this.handleError<any>(`Error SharedModule ->  commentUpdate`)
         )
       );
   }
@@ -93,10 +93,33 @@ export class SharedService {
     let ApiUrl = `${this.ApiServiceUrl}comment/${id}`;
     return this.http.delete<Comment>(ApiUrl, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched commentDelete `)),
-        catchError(this.handleError<any>(`commentDelete`))
+        tap(_ => this.log(`fetched SharedModule ->  commentDelete `)),
+        catchError(this.handleError<any>(`Error SharedModule ->  commentDelete`))
       );
   }
+
+  activityGetAll(skip:number, limit:number, subject:string){
+    const url = `${this.ApiServiceUrl}activity/`;
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("limit",limit);
+    queryParams = queryParams.append("skip",skip);
+    queryParams = queryParams.append("subject",subject);
+    return this.http.get<any>(url, {headers:this.Header, params:queryParams}).pipe(
+      tap(_ => this.log(`fetched SharedModule ->  activityGetAll`)),
+      catchError(this.handleError('Error SharedModule ->  activityGetAll', []))
+    );
+  }
+
+  statsGetReport(){
+    const url = `${this.ApiServiceUrl}stats/global-report`;
+    return this.http.get<Activity[]>(url, {headers:this.Header}).pipe(
+      tap(_ => this.log(`fetched statsGetReport ->  activityGetAll`)),
+      catchError(this.handleError('Error SharedModule ->  statsGetReport', []))
+    );
+  }
+
+  activityGetAllForUser(){}
+  activityDelete(){}
 
   /* handleError */
   private handleError<T>(operation = 'operation', result?: T) {

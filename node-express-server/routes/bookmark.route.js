@@ -1,6 +1,13 @@
+/**
+ * Proteus-app
+ * Node/MongoDb/Angular/Angular Material - Stack
+ * by Andrea Porcella 2022
+ */
+
 const express = require('express');
 const router = express.Router();
-const Bookmark = require('../models/bookmark.js');
+const Bookmark = require('../models/bookmark.model.js');
+const coreLib = require('./../lib/core.lib');
 const {autenticateToken} = require('../middleware/authJwt');
 
 
@@ -26,17 +33,13 @@ router.post('/add', autenticateToken, async (req, res) => {
         updated: dateNow,
         owner:req.owner._id,
     });
-    try {
-        const saved = await bookmark.save();
-        res.json({ "success": true, mess: 'The bookmark was created successfully', payload: {data:saved} });
-    } catch (err) {
-        if (err.keyPattern?.email && err.code == "11000") {
-            res.status(401).json({ "success": false, mess: 'The email entered has already been used', payload: {error:err.code} });
-            return;
-        } else {
-            console.log('error', err);
-        }
-    }
+    bookmark.save().then(savedDoc=>{
+        return coreLib.registerActivity('created', bookmark, 'bookmark', req.owner._id);
+    }).then(savedDoc=>{
+        res.json({ succes: true, mess: 'The bookmark was created successfully', payload: {data:savedDoc} });
+    }).catch(err=>{
+        res.json({ succes: false, mess: "Error bookmark tag data" + err, payload: { error: err } });
+    });
 });
 
 // retrieve an object for specific id
@@ -51,21 +54,21 @@ router.get('/:id', autenticateToken, async (req, res) => {
 
 // update a specific document 
 router.patch('/:id', autenticateToken, async (req, res) => {
-    try {
         const dateNow = Date.now();
-        const updated = await Bookmark.updateOne({ _id: req.params.id }, {
-            $set: {
-                label: req.body.label,
-                url: req.body.url,
-                description: req.body.description,
-                accesId:req.body.accessId,
-                updated: dateNow,
-            }
-        });
-        res.json({succes: true, mess: "The bookmark has been successfully updated", payload:{data:updated} });
-    } catch (err) {
-        res.json({succes: false, mess: "Error updating data", payload: {error:err}});
-    }
+        const bookmark = await Bookmark.findById(req.params.id);
+        bookmark.label = req.body.label;
+        bookmark.url =  req.body.url;
+        bookmark.description =  req.body.description;
+        bookmark.accesId = req.body.accessId;
+        bookmark.updated = dateNow,
+        bookmark.save().then((savedDoc=>{
+            return coreLib.registerActivity('updated', bookmark, 'bookmark', req.owner._id);
+        })).then(savedDoc=>{
+            res.json({succes: true, mess: "The bookmark has been successfully updated", payload:{data:savedDoc} });
+        })
+        .catch(err=>{
+            res.json({succes: false, mess: "Error updating data", payload: {error:err}});
+        });   
 });
 
 // delete specific document 

@@ -32,8 +32,8 @@ export class TagService {
   getAll(onlyLabel=false): Observable<Tag[]> {
     const url = `${this.ApiServiceUrl}`;
     return this.http.get<Tag[]>(url, {headers:this.Header}).pipe(
-      tap(_ => this.log(`fetched getBooks (all)`)),
-      catchError(this.handleError('getBooks (all)', []))
+      tap(_ => this.log(`fetched getAll Tags`)),
+      catchError(this.handleError('getAll Tags', []))
     );
   } 
 
@@ -41,8 +41,8 @@ export class TagService {
     find(onlyLabel=false): Observable<Tag[]> {
       const url = `${this.ApiServiceUrl}/find`;
       return this.http.get<Tag[]>(url, {headers:this.Header}).pipe(
-        tap(_ => this.log(`fetched getBooks (all)`)),
-        catchError(this.handleError('getBooks (all)', []))
+        tap(_ => this.log(`fetched find Tags`)),
+        catchError(this.handleError('find Tags', []))
       );
     } 
 
@@ -50,20 +50,19 @@ export class TagService {
   getOne(id: number): Observable<any> {
     const url = `${this.ApiServiceUrl}/${id}`;
     return this.http.get<any>(url, {headers:this.Header}).pipe(
-      tap(_ => this.log(`fetched getBook id=${id}`)),
-      catchError(this.handleError<any>(`getBook id=${id}`))
+      tap(_ => this.log(`fetched get Tag id=${id}`)),
+      catchError(this.handleError<any>(`get Tag id=${id}`))
     );
   }
 
   /** Add book */
   add(data): Observable<any> {
-    console.log(data);
     const ApiUrl = `${this.ApiServiceUrl}/add`;
     //var formData: any = new FormData();
     return this.http.post<any>(ApiUrl, data, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched addBook `)),
-        catchError(this.handleError<Tag>(`addBook`))
+        tap(_ => this.log(`fetched add Tag `)),
+        catchError(this.handleError<Tag>(`add Tags`))
       );
   }
 
@@ -73,9 +72,9 @@ export class TagService {
     //var formData: any = new FormData();
     return this.http.patch<any>(ApiUrl, data, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched updateBook`)),
+        tap(_ => this.log(`fetched update Tag`)),
         catchError(
-          this.handleError<Tag>(`updateBook`)
+          this.handleError<Tag>(`update Tag`)
         )
       );
   }
@@ -85,8 +84,8 @@ export class TagService {
     let ApiUrl = `${this.ApiServiceUrl}/${id}`;
     return this.http.delete<any>(ApiUrl, {headers:this.Header})
       .pipe(
-        tap(_ => this.log(`fetched deleteBook `)),
-        catchError(this.handleError<any>(`deleteBook`))
+        tap(_ => this.log(`fetched delete Tag `)),
+        catchError(this.handleError<any>(`delete Tag`))
       );
   }
   

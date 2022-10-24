@@ -74,7 +74,7 @@
                                     <mat-icon>more_vert</mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu">
-                                    <button mat-menu-item (click)="view(row)">
+                                    <button mat-menu-item routerLink="/bookmark/view/{{row._id}}">
                                         <mat-icon>visibility</mat-icon>
                                         <span>View bookmark</span>
                                     </button>

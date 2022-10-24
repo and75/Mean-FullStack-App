@@ -68,7 +68,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
     addDialog.afterClosed().subscribe(result => {
       if (result) {
         this.userService.addUser(result.form).subscribe(res => {
-          console.log(res);
           if (res.success) {
             this.getData();
             this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
@@ -99,15 +98,12 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   delete(row: any) {
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the user: ${row.firstName} ${row.lastName}?`
     });
     deleteDialog.afterClosed().subscribe(result => {
-      console.log('deleteDialog', result);
       if (result) {
         this.userService.deleteUser(row._id).subscribe((res: any) => {
-          console.log('deleteUser',res)
           if (res.succes) {
             this.getData();
             this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })

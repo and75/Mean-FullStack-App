@@ -1,0 +1,26 @@
+<mat-form-field class="example-chip-list w-100" appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-chip-list #chipList aria-label="Tag selection">
+      <mat-chip
+        *ngFor="let tag of tags"
+        (removed)="remove(tag)">
+        {{tag.label}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Find/add new authors..."
+        #tagInput
+        [formControl]="formControl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let tag of filtered | async" [value]="tag">
+        {{tag.label}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>

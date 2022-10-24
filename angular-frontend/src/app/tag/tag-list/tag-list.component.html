@@ -64,6 +64,10 @@
                                     <mat-icon>more_vert</mat-icon>
                                 </button>
                                 <mat-menu #menu="matMenu">
+                                    <button mat-menu-item routerLink="/tag/view/{{row._id}}">
+                                        <mat-icon>visibility</mat-icon>
+                                        <span>View tag</span>
+                                    </button>
                                     <button mat-menu-item (click)="edit(row)">
                                         <mat-icon>edit</mat-icon>
                                         <span>Edit tag</span>

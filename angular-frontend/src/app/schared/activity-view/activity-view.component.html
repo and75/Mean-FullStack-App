@@ -1,1 +1,81 @@
-<p>activity-view works!</p>
+<!-- Section: Timeline -->
+<mat-card class="mt-3">
+    <mat-card-header style="flex:auto">
+        <div mat-card-avatar>
+            <mat-icon style="font-size: 47px; color:#656565fa;">view_timeline</mat-icon>
+        </div>
+        <mat-card-title>Activity</mat-card-title>
+        <mat-card-subtitle>Last activity on platforme</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <section class="pt-3">
+            <ul class="timeline-with-icons">
+                <li class="timeline-item mb-5" *ngFor="let item of data">
+                    <div *ngIf="item.object && item.objModel=='book'">
+                        <span class="timeline-icon">
+                            <mat-icon>menu_book</mat-icon>
+                        </span>
+                        <h5 class="text-muted fw-bold">{{item.updated | date:'MMM d, y, h:mm:ss a'}} / <a
+                                routerLink="/members/view/{{item.subject._id}}"><u>{{item.subject.firstName}}
+                                    {{item.subject.lastName}}</u></a> as {{item.action}} {{item.objModel}}</h5>
+                        <p class=" mb-2"><a
+                                routerLink="/{{item.objModel}}/view/{{item.object._id}}">{{item.object.title}}</a></p>
+                        <p class="text-muted">
+                            {{item.object.description}}
+                        </p>
+                    </div>
+                    <div *ngIf="item.object && item.objModel=='author'">
+                        <span class="timeline-icon">
+                            <mat-icon>badge</mat-icon>
+                        </span>
+                        <h5 class="text-muted fw-bold">{{item.updated | date:'MMM d, y, h:mm:ss a'}} / <a
+                                routerLink="/members/view/{{item.subject._id}}"><u>{{item.subject.firstName}}
+                                    {{item.subject.lastName}}</u></a> as {{item.action}} {{item.objModel}}</h5>
+                        <p class=" mb-2"><a
+                                routerLink="/{{item.objModel}}/view/{{item.object._id}}">{{item.object.fullname}}</a></p>
+                        <p class="text-muted">
+                            {{item.object.description}}
+                        </p>
+                    </div>
+                    <div *ngIf="item.object && item.objModel=='vocabulary'">
+                        <span class="timeline-icon">
+                            <mat-icon>translate</mat-icon>
+                        </span>
+                        <h5 class="text-muted fw-bold">{{item.updated | date:'MMM d, y, h:mm:ss a'}} / <a
+                                routerLink="/members/view/{{item.subject._id}}"><u>{{item.subject.firstName}}
+                                    {{item.subject.lastName}}</u></a> as {{item.action}} {{item.objModel}}</h5>
+                        <p class=" mb-2"><a
+                                routerLink="/{{item.objModel}}/view/{{item.object._id}}">{{item.object. el}} / {{item.object.la}} / {{item.object.de}} / {{item.object.en}} / {{item.object.fr}} / {{item.object.it}}</a></p>
+                    </div>
+                    <div *ngIf="item.object && item.objModel=='tag'">
+                        <span class="timeline-icon">
+                            <mat-icon>category</mat-icon>
+                        </span>
+                        <h5 class="text-muted fw-bold">{{item.updated | date:'MMM d, y, h:mm:ss a'}} / <a
+                                routerLink="/members/view/{{item.subject._id}}"><u>{{item.subject.firstName}}
+                                    {{item.subject.lastName}}</u></a> as {{item.action}} {{item.objModel}}</h5>
+                        <p class=" mb-2"><a
+                                routerLink="/{{item.objModel}}/view/{{item.object._id}}">{{item.object.label}}</a></p>
+                    </div>
+                    <div *ngIf="item.object && item.objModel=='bookmark'">
+                        <span class="timeline-icon">
+                            <mat-icon>bookmark</mat-icon>
+                        </span>
+
+                        <h5 class="text-muted fw-bold">{{item.updated | date:'MMM d, y, h:mm:ss a'}} / <a
+                                routerLink="/members/view/{{item.subject._id}}"><u>{{item.subject.firstName}}
+                                    {{item.subject.lastName}}</u></a> as {{item.action}} {{item.objModel}}</h5>
+                        <p class=" mb-2"><a
+                                routerLink="/{{item.objModel}}/view/{{item.object._id}}">{{item.object.label}}</a></p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-paginator [length]="resultsLength" [pageSize]="limit" aria-label="Select pages"></mat-paginator>
+    </mat-card-footer>
+</mat-card>
+
+
+<!-- Section: Timeline -->

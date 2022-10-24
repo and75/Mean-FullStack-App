@@ -1,0 +1,133 @@
+<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
+    <mat-icon>add</mat-icon>
+    <div class="m-0 ms-2" style="flex:auto">Add Author</div>
+    <button mat-icon-button color="basic" style="align-self:flex-end" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+
+<form class="book-form" [formGroup]="form" novalidate (ngModel)="form">
+    <mat-dialog-content>
+        <div class="form-body">
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Full name</mat-label>
+                <input matInput formControlName="fullname" id="fullname">
+                <mat-hint *ngIf="submitted && f.fullname.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.fullname.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-2" appearance="fill">
+                <mat-label>Biography</mat-label>
+                <textarea matInput formControlName="biography" id="biography"></textarea>
+                <mat-hint *ngIf="submitted && f.biography.errors" color="warn">
+                    <div class="text-warn" *ngFor="let item of f.biography.errors | keyvalue">
+                        {{logError(item.key, item.value)}}
+                    </div>
+                </mat-hint>
+            </mat-form-field>
+            <h3>Date of birth</h3>
+            <div class="row" formGroupName="birthDate">
+                <div class="col-3">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Century</mat-label>
+                        <input matInput formControlName="century" id="century">
+                        <mat-hint *ngIf="submitted && fBd.century.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fBd.century.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-3 align-items-center">
+                    <mat-slide-toggle formControlName="bC" id="bC2">
+                        Before Ch.
+                    </mat-slide-toggle>
+                </div>
+                <div class="col-2">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Year</mat-label>
+                        <input matInput formControlName="year" id="year">
+                        <mat-hint *ngIf="submitted && fBd.year.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fBd.year.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Place</mat-label>
+                        <input matInput formControlName="place" id="place">
+                        <mat-hint *ngIf="submitted && fBd.place.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fBd.place.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <h3>Death date</h3>
+            <div class="row" formGroupName="deathDate">
+                <div class="col-3">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Century</mat-label>
+                        <input matInput formControlName="century" id="century">
+                        <mat-hint *ngIf="submitted && fDd.century.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fDd.century.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-3 align-items-center">
+                    <mat-slide-toggle formControlName="bC" id="bC">
+                        Before Ch.
+                    </mat-slide-toggle>
+                </div>
+                <div class="col-2">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Year</mat-label>
+                        <input matInput formControlName="year" id="year">
+                        <mat-hint *ngIf="submitted && fDd.year.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fDd.year.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Place</mat-label>
+                        <input matInput formControlName="place" id="place">
+                        <mat-hint *ngIf="submitted && fDd.place.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fDd.place.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
+            <app-tag-input formControlName="tags" label="Disciplinary areas"></app-tag-input>
+            <input type="hidden" formControlName="tags" id="tags" value="#tagInput.tags">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="fill" class="w-100 mb-2">
+                        <mat-label>Visibility</mat-label>
+                        <mat-select formControlName="accessId" id="accessId">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let item of accessIds  | keyvalue" [value]="item.value">
+                                {{item.key}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions style="justify-content: flex-end;">
+        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
+        <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button>
+    </mat-dialog-actions>
+</form>

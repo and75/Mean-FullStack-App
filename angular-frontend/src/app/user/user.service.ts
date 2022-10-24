@@ -39,17 +39,16 @@ export class UserService {
   }
 
   /** GET User */
-  getUser(id: number): Observable<User> {
-    const url = `${this.ApiServiceUrl}/${id}}`;
-    return this.http.get<UserModel>(url, {headers:this.Header}).pipe(
-      tap(_ => this.log(`fetched getUser id=${id}`)),
-      catchError(this.handleError<User>(`getUser id=${id}`))
+  getUser(id: string): Observable<any> {
+    const url = `${this.ApiServiceUrl}/${id}`;
+    return this.http.get<any>(url, {headers:this.Header}).pipe(
+      tap(_ => this.log(`fetched getUser id=${id} ${url} `)),
+      catchError(this.handleError<any>(`getUser id=${id}`))
     );
   }
 
   /** Add user */
   addUser(data): Observable<any> {
-    console.log(data);
     const ApiUrl = `${this.ApiServiceUrl}/add`;
     //var formData: any = new FormData();
     return this.http.post<any>(ApiUrl, data, {headers:this.Header})
@@ -61,7 +60,6 @@ export class UserService {
 
   /* Update a user */
   updateUser(id:string, data: any): Observable<any> {
-    console.log(data);
     const ApiUrl = `${this.ApiServiceUrl}/${id}`;
     //var formData: any = new FormData();
     return this.http.patch<any>(ApiUrl,data,{headers:this.Header})

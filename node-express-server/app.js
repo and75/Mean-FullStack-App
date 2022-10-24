@@ -6,13 +6,15 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/custumer.route');
 const bookRoutes = require('./routes/book.route');
+const authorRoutes = require('./routes/author.route')
 const driveRoutes = require('./routes/drive.route');
 const bookmarkRoutes = require('./routes/bookmark.route');
 const tagRoutes = require('./routes/tag.route');
 const vocabularyRoutes = require('./routes/vocabulary.route');
 const commentRoutes = require('./routes/comment.route');
 const activityRoutes = require('./routes/activity.route');
-const importRoutes = require('./routes/import.route')
+const importRoutes = require('./routes/import.route');
+const statsRoutes = require('./routes/stats.route');
 
 app.use(express.json());
 app.use(cors({
@@ -27,6 +29,7 @@ const PORT = 8080;
 
 app.use('/api/custumer', userRoutes);
 app.use('/api/book', bookRoutes);
+app.use('/api/author', authorRoutes);
 app.use('/api/drive', driveRoutes);
 app.use('/api/bookmark', bookmarkRoutes);
 app.use('/api/tag', tagRoutes);
@@ -34,7 +37,7 @@ app.use('/api/vocabulary', vocabularyRoutes);
 app.use('/api/comment', commentRoutes);
 app.use('/api/activity', activityRoutes);
 app.use('/api/import', importRoutes);
-
+app.use('/api/stats', statsRoutes);
 app.use('/', express.static('public'));
 
 

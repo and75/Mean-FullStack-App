@@ -62,7 +62,6 @@ export class CommentViewComponent implements OnInit, OnChanges {
 
   getData(){
     this.service.commentGetAll(this.relObject).subscribe((res:any) => {
-      console.log('Data Comment', res);
       if (res.succes == true) {
         this.data = res.payload.data;
       }
@@ -71,7 +70,6 @@ export class CommentViewComponent implements OnInit, OnChanges {
 
   add(data:any){
     this.service.commentAdd(data).subscribe((res:any) => {
-      console.log(res);
       if (res.success) {
         this.getData();
         this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
@@ -82,7 +80,6 @@ export class CommentViewComponent implements OnInit, OnChanges {
   }
 
   delete(row:any){
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the comment:\n\n ${row.text} ?`
     });

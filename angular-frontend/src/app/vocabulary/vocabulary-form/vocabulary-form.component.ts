@@ -78,7 +78,7 @@ export class VocabularyFormComponent implements OnInit {
 
   save() {
     this.submitted = true;
-    //console.log(this.form, this.form.status, this.update);
+    console.log(this.form, this.form.status, this.update);
     if (this.form.status == 'VALID') {
       this.dialogRef.close(
         {

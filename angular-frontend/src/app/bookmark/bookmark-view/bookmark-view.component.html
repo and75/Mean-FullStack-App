@@ -1,26 +1,42 @@
-<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
-    <mat-icon>bookmark</mat-icon>
-    <div class="m-0 ms-2" style="flex:auto">{{data.label}}</div>
-    <button mat-icon-button color="basic" style="align-self:flex-end" (click)="close()">
-        <mat-icon>close</mat-icon>
-    </button>
-</h2>
-
-<mat-divider></mat-divider>
-<mat-dialog-content>
-    <mat-list>
-        <mat-list-item>
-          <mat-icon mat-list-icon>link</mat-icon>
-          <div mat-line><a href="{{data.url}}" target="_blank">{{data.url}}</a></div>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>description</mat-icon>
-          <div mat-line ><p>{{data.description}} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-              <br>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p></div>
-        </mat-list-item>
-      </mat-list>
-</mat-dialog-content>
-<mat-dialog-actions style="justify-content: flex-end;">
-    <!--button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
-    <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button -->
-</mat-dialog-actions>
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="row py-3 px-2">
+        <div class="col-lg-2">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-lg-10" *ngIf="data">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <mat-card>
+                        <div class="pb-3" style="display: flex; align-items: center;">
+                            <div style="width:70px">
+                                <mat-icon style="font-size: 47px;">bookmark</mat-icon>
+                            </div>
+                            <div style="flex:auto">
+                                <h1 class="m-0 p-0">{{data.label}}</h1>
+                            </div>
+                            <div style="width:200px text-right">
+                                <button mat-raised-button color="accent" (click)="edit(data)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <div class="row mt-4"></div>
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <app-owner-block [data]="data"></app-owner-block>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <app-comment-view [relObject]="data._id" [relType]="'book'"></app-comment-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

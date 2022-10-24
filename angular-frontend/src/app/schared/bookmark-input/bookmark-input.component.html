@@ -1,0 +1,24 @@
+<h3>Source of the digital source</h3>
+<div class="row" [formGroup]="formGroup">
+    <div class="col-6">
+        <mat-form-field class="w-100 mb-2 ng-invalid" appearance="fill">
+            <mat-label>Label</mat-label>
+            <input type="text" placeholder="Pick one from Bookmarks / Or insert one" aria-label="Number" matInput
+                formControlName="label" [matAutocomplete]="auto" (change)="setOutput()">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let bookmark of filteredOptions  | async" [value]="bookmark">
+                    {{bookmark.label}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="formControl.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="col-6">
+        <mat-form-field class="w-100 mb-2 ng-invalid" appearance="fill">
+            <mat-label>Url</mat-label>
+            <input type="text" formControlName="url" placeholder="ex http://www.example.com" aria-label="Url" matInput (change)="setOutput()" >
+        </mat-form-field>
+    </div>
+</div>

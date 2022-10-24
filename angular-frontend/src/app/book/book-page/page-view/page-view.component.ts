@@ -33,7 +33,6 @@ export class PageViewComponent implements OnInit {
   }
 
   public hideOtherPDFs(): void {
-    console.log('Hiding');
     this.visible[0] = false;
     this.visible[1] = false;
   }
@@ -57,10 +56,8 @@ export class PageViewComponent implements OnInit {
 
   getContent(){
     this.service.getPage(this.contentID).subscribe((res):any=>{
-      console.log(res);
       if (res.succes == true) {
         this.data = new Page(res.payload.data);
-        console.log('Book view', this.data)
       }
     })
   }

@@ -1,26 +1,80 @@
-<h2 mat-dialog-title style="display: flex;flex-direction: row; align-items: center">
-    <mat-icon>bookmark</mat-icon>
-    <div class="m-0 ms-2" style="flex:auto">{{data.label}}</div>
-    <button mat-icon-button color="basic" style="align-self:flex-end" (click)="close()">
-        <mat-icon>close</mat-icon>
-    </button>
-</h2>
+<app-toolbar></app-toolbar>
+<div class="container-fluid">
+    <div class="row py-3 px-2">
+        <div class="col-lg-2">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-lg-10" *ngIf="data">
+            <div class="row" >
+                <div class="col-lg-12 ">
+                    <mat-card>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width:70px">
+                                <mat-icon style="font-size: 47px;">translate</mat-icon>
+                            </div>
+                            <div style="flex:auto">
+                                <h1 class="m-0 p-0">{{data.el}}</h1>
+                            </div>
+                            <div style="width:200px text-right">
+                                <button mat-raised-button color="accent" (click)="edit(data)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </div>
 
-<mat-divider></mat-divider>
-<mat-dialog-content>
-    <mat-list>
-        <mat-list-item>
-          <mat-icon mat-list-icon>link</mat-icon>
-          <div mat-line><a href="{{data.url}}" target="_blank">{{data.url}}</a></div>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>description</mat-icon>
-          <div mat-line ><p>{{data.description}} Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-              <br>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p></div>
-        </mat-list-item>
-      </mat-list>
-</mat-dialog-content>
-<mat-dialog-actions style="justify-content: flex-end;">
-    <!--button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
-    <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button -->
-</mat-dialog-actions>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <div class="row mt-4 mb-3">
+                                <div class="col-auto mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block badge-lang me-2">EL</span>
+                                        <b>{{data.el}} </b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center ">
+                                        <span class="d-inline-block badge-lang me-2">LA</span>
+                                        <b>{{data.la}} </b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block badge-lang me-2">DE</span>
+                                        <b>{{data.de}} </b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block badge-lang me-2">EN</span>
+                                        <b>{{data.en}} </b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block badge-lang me-2">FR</span>
+                                        <b>{{data.fr}} </b>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block badge-lang me-2">IT</span>
+                                        <b>{{data.it}} </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                        <mat-card-content>
+                            <app-owner-block [data]="data"></app-owner-block>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <app-comment-view [relObject]="data._id" [relType]="'book'"></app-comment-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

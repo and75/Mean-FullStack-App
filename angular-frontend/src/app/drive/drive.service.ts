@@ -52,7 +52,6 @@
  
    /** Add book */
    addDrive(data): Observable<any> {
-     console.log(data);
      const ApiUrl = `${this.ApiServiceUrl}/add`;
      //var formData: any = new FormData();
      return this.http.post<any>(ApiUrl, data, {headers:this.Header})

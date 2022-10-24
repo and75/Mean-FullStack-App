@@ -1,5 +1,5 @@
 {
-  "name": "bsys-mean-stack-demo",
+  "name": "mongo",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,11 +7,12 @@
     "start": "nodemon app.js",
     "start-prod": "node app.js"
   },
-  "author": "Andrea Porcella 2022",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "chartjs-plugin-datalabels": "^2.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",

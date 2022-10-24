@@ -20,7 +20,7 @@
             </mat-form-field>
         </div>
     </mat-dialog-content>
-    <app-tag-input [label]="tagInputLabel" [placeholder]="tagInputPlaceholder" [tags]="data.translations" (outTag)="setTags($event)"></app-tag-input>
+    <app-tag-input formControlName="translations" label='Translation'></app-tag-input>
     <mat-dialog-actions style="justify-content: flex-end;">
         <button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
         <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button>

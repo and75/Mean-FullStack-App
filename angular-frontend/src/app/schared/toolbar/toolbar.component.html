@@ -13,14 +13,14 @@
         </div>
         <div class="col-3 text-end">
             <div class="btn-group" *ngIf="loggedInUser">
-                <button mat-button #tooltip="matTooltip" matTooltip="Go to your page" >
+                <button mat-button #tooltip="matTooltip" matTooltip="Go to your page" routerLink="/members/view/{{loggedInUser.id}}" >
                     <mat-icon aria-hidden="false" aria-label="Account icon">account_circle</mat-icon> 
                     {{loggedInUser.name}}
                 </button>
-                <button mat-button class="ms-1" #tooltip="matTooltip" matTooltip="Notifications">
+                <button mat-button class="ms-1" #tooltip="matTooltip" matTooltip="Notifications" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">
                     <mat-icon aria-hidden="false" aria-label="Notifications icon">notifications</mat-icon>
                 </button>
-                <button mat-raised-button color="accent" class="ms-1" #tooltip="matTooltip" matTooltip="Logout" (click)="logOut()">
+                <button mat-stroked-button color="warn" class="ms-1" #tooltip="matTooltip" matTooltip="Logout" (click)="logOut()">
                     <mat-icon aria-hidden="false" aria-label="Account icon">logout</mat-icon>
                 </button>
             </div>

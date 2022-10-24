@@ -39,7 +39,7 @@ export class BookService {
 
 
   /** GET One Book */
-  getBook(id: number): Observable<any> {
+  getBook(id: any): Observable<any> {
     const url = `${this.ApiServiceUrl}/${id}`;
     return this.http.get<any>(url, {headers:this.Header}).pipe(
       tap(_ => this.log(`fetched getBook id=${id}`)),
@@ -49,7 +49,6 @@ export class BookService {
 
   /** Add book */
   addBook(data): Observable<any> {
-    console.log(data);
     const ApiUrl = `${this.ApiServiceUrl}/add`;
     //var formData: any = new FormData();
     return this.http.post<any>(ApiUrl, data, {headers:this.Header})

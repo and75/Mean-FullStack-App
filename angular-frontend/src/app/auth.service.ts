@@ -33,7 +33,6 @@ export class AuthService {
 	}
 	
 	setSession(res:any) {
-		console.log(res);
 		if(res.succes){
 			let token = "JzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpva";
 			let user:User = decode(res.payload.authToken);

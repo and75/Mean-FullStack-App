@@ -18,8 +18,8 @@ export class ToolbarComponent implements OnInit {
 
   getloggedInUser(){
     this.authService.getLoggedInUser().then((res)=>{
-      console.log(res);
-      this.loggedInUser = res;    
+      this.loggedInUser = res;
+      console.log('this.loggedInUser',this.loggedInUser)    
     });
   }
 

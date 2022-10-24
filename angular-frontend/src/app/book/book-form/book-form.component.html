@@ -18,15 +18,10 @@
                     </div>
                 </mat-hint>
             </mat-form-field>
-            <mat-form-field class="w-100 mb-2" appearance="fill">
-                <mat-label>Author</mat-label>
-                <input matInput formControlName="author" id="author">
-                <mat-hint *ngIf="submitted && f.author.errors" color="warn">
-                    <div class="text-warn" *ngFor="let item of f.author.errors | keyvalue">
-                        {{logError(item.key, item.value)}}
-                    </div>
-                </mat-hint>
-            </mat-form-field>
+
+
+            <app-author-input formControlName="authors" required></app-author-input>
+
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="w-100 mb-2" appearance="fill">
@@ -60,6 +55,47 @@
                     </div>
                 </mat-hint>
             </mat-form-field>
+            <h3>Current edition</h3>
+            <div class="row" formGroupName="currentEdition">
+                <div class="col-3">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Century</mat-label>
+                        <input matInput formControlName="century" id="century">
+                        <mat-hint *ngIf="submitted && fCe.century.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fCe.century.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-3 align-items-center">
+                    <mat-slide-toggle formControlName="bC" id="bC2">
+                        Before Ch.
+                    </mat-slide-toggle>
+                </div>
+                <div class="col-2">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Year</mat-label>
+                        <input matInput formControlName="year" id="year">
+                        <mat-hint *ngIf="submitted && fCe.year.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fCe.year.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="w-100 mb-2" appearance="fill">
+                        <mat-label>Localisation</mat-label>
+                        <input matInput formControlName="location" id="location">
+                        <mat-hint *ngIf="submitted && fCe.location.errors" color="warn">
+                            <div class="text-warn" *ngFor="let item of fCe.location.errors | keyvalue">
+                                {{logError(item.key, item.value)}}
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>
             <h3>First edition</h3>
             <div class="row" formGroupName="firstEdition">
                 <div class="col-3">
@@ -101,50 +137,10 @@
                     </mat-form-field>
                 </div>
             </div>
-            <h3 class="m-0">Current edition</h3>
-            <div class="row" formGroupName="currentEdition">
-                <div class="col-3">
-                    <mat-form-field class="w-100 mb-2" appearance="fill">
-                        <mat-label>Century</mat-label>
-                        <input matInput formControlName="century" id="century">
-                        <mat-hint *ngIf="submitted && fCe.century.errors" color="warn">
-                            <div class="text-warn" *ngFor="let item of fCe.century.errors | keyvalue">
-                                {{logError(item.key, item.value)}}
-                            </div>
-                        </mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="col-3 align-items-center">
-                    <mat-slide-toggle formControlName="bC" id="bC2">
-                        Before Ch.
-                    </mat-slide-toggle>
-                </div>
-                <div class="col-2">
-                    <mat-form-field class="w-100 mb-2" appearance="fill">
-                        <mat-label>Year</mat-label>
-                        <input matInput formControlName="year" id="year">
-                        <mat-hint *ngIf="submitted && fCe.year.errors" color="warn">
-                            <div class="text-warn" *ngFor="let item of fCe.year.errors | keyvalue">
-                                {{logError(item.key, item.value)}}
-                            </div>
-                        </mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="col-4">
-                    <mat-form-field class="w-100 mb-2" appearance="fill">
-                        <mat-label>Localisation</mat-label>
-                        <input matInput formControlName="location" id="location">
-                        <mat-hint *ngIf="submitted && fCe.location.errors" color="warn">
-                            <div class="text-warn" *ngFor="let item of fCe.location.errors | keyvalue">
-                                {{logError(item.key, item.value)}}
-                            </div>
-                        </mat-hint>
-                    </mat-form-field>
-                </div>
-            </div>
+            
             <mat-form-field class="w-100 mb-2" appearance="fill">
                 <mat-label>Bibliographic reference</mat-label>
-                <textarea matInput formControlName="reference" id="reference"></textarea>
+                <input matInput formControlName="reference" id="reference">
                 <mat-hint *ngIf="submitted && f.reference.errors" color="warn">
                     <div class="text-warn" *ngFor="let item of f.reference.errors | keyvalue">
                         {{logError(item.key, item.value)}}
@@ -160,16 +156,11 @@
                     </div>
                 </mat-hint>
             </mat-form-field>
-            <mat-form-field class="w-100 mb-2" appearance="fill">
-                <mat-label>Source of the digital version</mat-label>
-                <textarea matInput formControlName="source" id="source"></textarea>
-                <mat-hint *ngIf="submitted && f.source.errors" color="warn">
-                    <div class="text-warn" *ngFor="let item of f.source.errors | keyvalue">
-                        {{logError(item.key, item.value)}}
-                    </div>
-                </mat-hint>
-            </mat-form-field>
-            <app-tag-input [label]="tagInputLabel" [placeholder]="tagInputPlaceholder" [tags]="data.tags" (outTag)="setTags($event)"></app-tag-input>
+
+            <app-bookmark-input formControlName="digitalSource" required></app-bookmark-input>
+            
+            <app-tag-input formControlName="tags" label="Tags"></app-tag-input>
+            
             <div class="row">
                 <div class="col-6">
                     <mat-form-field appearance="fill" class="w-100 mb-2">
@@ -191,7 +182,7 @@
         </div>
     </mat-dialog-content>
     <mat-dialog-actions style="justify-content: flex-end;">
-        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="setForm()">Reset</button>
+        <button mat-raised-button type="reset" color="basic" class="me-2" (click)="resetForm()">Reset</button>
         <button mat-raised-button type="submit" color="accent" (click)="save()">Save</button>
     </mat-dialog-actions>
 </form>

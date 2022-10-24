@@ -1,0 +1,748 @@
+
+{
+    "payload": {
+        "count": 74,
+        "data": [
+            {
+                "guid": 940,
+                "el": "ψυχή",
+                "la": "anima",
+                "de": "Seele",
+                "en": "soul",
+                "fr": "âme",
+                "it": "anima",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 939,
+                "el": "παράδειγμα",
+                "la": "exemplum, archetypus",
+                "de": "Vorbild, Beispiel",
+                "en": "a pattern or model",
+                "fr": "modèle, esempio",
+                "it": "modello, exemple",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 938,
+                "el": "μιμέομαι",
+                "la": "imitatio",
+                "de": "nachahmen",
+                "en": "to mimic, imitate, represent, portray",
+                "fr": "imiter",
+                "it": "imitare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 937,
+                "el": "κύκλος",
+                "la": "circulus",
+                "de": "Kreis, Ringsum, Kreisbahn, Kreislauf",
+                "en": "circle",
+                "fr": "cercle, circulaire",
+                "it": "cerchio, circolare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 936,
+                "el": "θεός",
+                "la": "deus",
+                "de": "Gott",
+                "en": "god",
+                "fr": "dieu, divinité",
+                "it": "dio, divinità",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 935,
+                "el": "ζῷον",
+                "la": "animal",
+                "de": "Lebenwesen, lebendige Wesen",
+                "en": "a living being, animal",
+                "fr": "vivant, les vivants, être vivant",
+                "it": "vivente",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 934,
+                "el": "εἰκών",
+                "la": "imago",
+                "de": "Bild, Abbild",
+                "en": "a likeness, image, portrait, an image in a mirror, a semblance, phantom, an image in the mind",
+                "fr": "image",
+                "it": "immagine, modello",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 933,
+                "el": "σύστασις",
+                "la": "/",
+                "de": "Zusammensetzung, Zusammenfügung, Zusammenstellung, Aufbau",
+                "en": "a putting together, composition, construction, structure number",
+                "fr": "constitution, construction, structure",
+                "it": "composizione, struttura, combinazione",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 932,
+                "el": "συνίστημι",
+                "la": "/",
+                "de": "zusammenfügen,  zusammenstellen, erschaffen, zusammentreten",
+                "en": "to set together, combine, associate, unite",
+                "fr": "constituer, former, se combiner",
+                "it": "costituire, produrre, comporre",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 931,
+                "el": "συνάγω",
+                "la": "/",
+                "de": "zusammenführen",
+                "en": "to bring together, gather together, collect, convene",
+                "fr": "contracter, unir, mettre ensemble",
+                "it": "contrarre, congiungere, unire, insieme",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 930,
+                "el": "ὀρθός",
+                "la": "/",
+                "de": "richtig, am richtigsten, im richtigen Sinne, in der richtigen Weise",
+                "en": "traight, in height, upright, standing, right, true, correct.",
+                "fr": "correctement, à juste titre, droit",
+                "it": "corretto, correttamente, esatto, diritto, come si conviene",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 929,
+                "el": "κόσμος",
+                "la": "ornatus",
+                "de": "Kosmos, Welt, Ordnung",
+                "en": "order, the universe, the world",
+                "fr": "monde, ordre",
+                "it": "mondo, cosmo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 928,
+                "el": "διακοσμέω",
+                "la": "exornaret",
+                "de": "in Ordnung bringen, einrichten",
+                "en": "set in order",
+                "fr": "mettre en ordre, disposer, organiser",
+                "it": "mettere in ordine, ordinare, organizzare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 927,
+                "el": "ἁρμονία",
+                "la": "harmonia",
+                "de": "Harmonie",
+                "en": "harmony",
+                "fr": "harmonie",
+                "it": "armonia",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 926,
+                "el": "ἀριθμός",
+                "la": "numerus",
+                "de": "Zahl",
+                "en": "number",
+                "fr": "nombre",
+                "it": "numero",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 925,
+                "el": "ἀναλογία",
+                "la": "proportio",
+                "de": "Verhältnis, Relation",
+                "en": "proportion",
+                "fr": "proportion",
+                "it": "proporzione",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 924,
+                "el": "τὸ πᾶν",
+                "la": "universum",
+                "de": "Das All",
+                "en": "uniiverse",
+                "fr": "univers",
+                "it": "universo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 923,
+                "el": "σελήνη",
+                "la": "luna",
+                "de": "Mond",
+                "en": "the moon",
+                "fr": "lune",
+                "it": "luna",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 922,
+                "el": "πλανητός",
+                "la": "erraticus",
+                "de": "Planeten (Irrsterne)",
+                "en": "wandering, planet",
+                "fr": "errants",
+                "it": "erranti",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 921,
+                "el": "περιφορά",
+                "la": "/",
+                "de": "/",
+                "en": "the revolving vault of heaven",
+                "fr": "/",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 920,
+                "el": "οὐρανός",
+                "la": "caelum,  mundum",
+                "de": "Himmel",
+                "en": "heaven",
+                "fr": "ciel",
+                "it": "cielo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 919,
+                "el": "ἥλιος",
+                "la": "sol",
+                "de": "Sonne",
+                "en": "the sun",
+                "fr": "soleil",
+                "it": "sole",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 918,
+                "el": "Ἑρμῆς",
+                "la": "Mercurius",
+                "de": "Hermes (Merkur)",
+                "en": "Hermes, Mercury",
+                "fr": "Hermès",
+                "it": "Ermes",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 917,
+                "el": "Ἑωσφόρος",
+                "la": "Lucifer",
+                "de": "Venus",
+                "en": "the Morning-star",
+                "fr": "Astre du matin",
+                "it": "Astro del mattino",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 916,
+                "el": "γῆ",
+                "la": "terra",
+                "de": "Erde, Land",
+                "en": "earth",
+                "fr": "terre, Terre",
+                "it": "terra",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 915,
+                "el": "ἄστρον",
+                "la": "stella, stellae",
+                "de": "Gestirn",
+                "en": "the stars",
+                "fr": "astre",
+                "it": "astro",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 914,
+                "el": "συγκεράννυμι",
+                "la": "/",
+                "de": "mischen (zusammenmischen, vermischen)",
+                "en": "to mix up with, commingle or blend with, temper by mixing with, to mix together",
+                "fr": "former un mélange, se meler",
+                "it": "mescolare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 913,
+                "el": "στρέφω",
+                "la": "/",
+                "de": "herumfahren, (sich) drehen",
+                "en": "to turn about or aside, turn, to twist, to spin, to turn oneself, to turn round or about",
+                "fr": "tourner en cercle, imprimer un mouvement de rotation, se mouvoir circulairment",
+                "it": "ruotare, volger(si), girare, muovere circolarmente",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 912,
+                "el": "στάσις",
+                "la": "/",
+                "de": "Aufstand, Stillstand, Standort, Beunruhigung",
+                "en": "a standing, the posture of standing, a position, posture, post, station",
+                "fr": "sédition, trouble, place",
+                "it": "sedizione, perturbazione, posizione",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 911,
+                "el": "πλανάω",
+                "la": "erro",
+                "de": "umherirren, umherlaufen, verirren",
+                "en": "to make to wander, lead wandering about, to lead astray, mislead,  deceive,  to wander, roam about, stray",
+                "fr": "errer, vagabonder",
+                "it": "errare, vagare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 910,
+                "el": "Περιφορά",
+                "la": "circuitus",
+                "de": "Umlauf",
+                "en": "carrying round",
+                "fr": "révolution, mouvement circulaire",
+                "it": "rotazione, movimento circolare, orbita",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 909,
+                "el": "περίοδος",
+                "la": "orbis",
+                "de": "Umlauf",
+                "en": "one who goes the rounds, patrol",
+                "fr": "révolution, cours, période",
+                "it": "periodo, movimento periodico, rotazione",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 908,
+                "el": "περιάγω",
+                "la": "/",
+                "de": "herumführen, (sich) drehen",
+                "en": "to lead or draw round / to lead about with one, have always by one, to turn round, turn about",
+                "fr": "tourner, faire tourner",
+                "it": "girare, far girare, voltare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 907,
+                "el": "φέρω",
+                "la": "mobilis",
+                "de": "tragen (Über, umher), bewegen, bringen (hierher, hervor)",
+                "en": "to bear or carry",
+                "fr": "entraîner, emporter, (se) porter, mouvoir",
+                "it": "trasportare, trascinare (via), portare, dirigere, mouvere",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 906,
+                "el": "μεταβάλλω",
+                "la": "/",
+                "de": "(sich) verwandeln, (sich) ändern",
+                "en": "to change, alter, to turn about, to throw into a different position",
+                "fr": "(se) changer, (se) transformer",
+                "it": "modificare, mutare, metamorfosi",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 905,
+                "el": "κίνησις",
+                "la": "mobilis",
+                "de": "Bewegung, Bewegligkeit, Vorgänge",
+                "en": "motion, movement, change",
+                "fr": "mouvement, altération",
+                "it": "movimento, alterazione",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 904,
+                "el": "Κυκλέω",
+                "la": "revolventis",
+                "de": "sich im Kreis bewegen",
+                "en": "to move round and round, wheel along, to move round or in a circle",
+                "fr": "se mouvoir en cercle",
+                "it": "procedere circolarmente, girare intorno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 903,
+                "el": "κινέω",
+                "la": "/",
+                "de": "(sich) bewegen, in Bewegung (bringen)",
+                "en": "to set in motion / to move",
+                "fr": "(se) mouvoir, mouvement (transmettre, mettre, soumettre, produire)",
+                "it": "muovere, dare movimento, imprimere movimento, mettere movimento, produrre movimento",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 902,
+                "el": "ἡλικία",
+                "la": "/",
+                "de": "Lebenshalter",
+                "en": "time of life / age / time / generation",
+                "fr": "âge",
+                "it": "età",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 901,
+                "el": "γίγνομαι",
+                "la": "generatio",
+                "de": "werden, entstehen, sein, geschehen",
+                "en": "to come into being",
+                "fr": "engendrer, devenir, naître, venir à l'être, se produire",
+                "it": "generare, diventare, nascere, essere",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 900,
+                "el": "γεννάω",
+                "la": "/",
+                "de": "erzeugen, hervorbringen, schaffen",
+                "en": "of the father / to beget / engender",
+                "fr": "engendrer, faire naître",
+                "it": "generare, fare nascere, dare vita",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 899,
+                "el": "ἀπλανής",
+                "la": "/",
+                "de": "die immer bleiben",
+                "en": "not wandering / steady / fixed / of stars, fixed",
+                "fr": "qui n’errent pas",
+                "it": "non errante",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 898,
+                "el": "ἄπαυστος",
+                "la": "/",
+                "de": "unaufhörlich",
+                "en": "unceasing / never-ending / never ceasing from",
+                "fr": "inestinguible",
+                "it": "senza fine",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 897,
+                "el": "ἀντεπιτάσσω",
+                "la": "/",
+                "de": "im Gegenzug auftragen",
+                "en": "to order in turn",
+                "fr": "assigner à son tour",
+                "it": "assegnare a sua volta",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 896,
+                "el": "\"*ἀνακυκλόομαι   Pass.\"",
+                "la": "/",
+                "de": "/",
+                "en": "to revolve",
+                "fr": "/",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 895,
+                "el": "ἀνακυκλ-έω",
+                "la": "/",
+                "de": "im Kreise drehen",
+                "en": "turn round again / come round in a circle",
+                "fr": "se mouvoir en cercle",
+                "it": "ruotare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 894,
+                "el": "ἀκίνητος",
+                "la": "immobilis",
+                "de": "unveränderlich / unbewegt / unbeweglich",
+                "en": "unmoved / motionless",
+                "fr": "sans changer / privée de mouvement / immobile / inébranlable",
+                "it": "immobile / senza muoversi",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 893,
+                "el": "χρόνῳ πολιὸν",
+                "la": "/",
+                "de": "mit der Zeit",
+                "en": "made old by time",
+                "fr": "par le temps",
+                "it": "dal passare del tempo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 892,
+                "el": "ὑπὸ χρόνου καὶ φθορᾶς",
+                "la": "diuturnitate temporis homi umque interitu obliteratas",
+                "de": "aufgrund der Zeit aber und des Untergangs",
+                "en": "'passed into oblivion through lapse of time'",
+                "fr": "sous l’effet du temps et parce que connurent la destruction ceux qui…",
+                "it": "a causa del tempo trascorso e della scomparsa",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 891,
+                "el": "*Τὸ ἔστι καὶ τὸ γίγνεται",
+                "la": "/",
+                "de": "/",
+                "en": "'that 'is' and 'comes to be'",
+                "fr": "“il est”, “il devient”",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 890,
+                "el": "\"*τὸ ἔσται καὶ τὸ γενήσεται καὶ τὸ γενηθήσεται         \"",
+                "la": "/",
+                "de": "/",
+                "en": "‘that ‘will be’ and ‘will come to be’ and ‘will be coming to be’’",
+                "fr": "“il sera”, “il sera devenu” et “il deviendra”",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 889,
+                "el": "*τὸ ἦν καὶ τὸ γέγονε καὶ τὸ ἐγίγνετο",
+                "la": "/",
+                "de": "/",
+                "en": "‘that ‘was’ and ‘has come to be’ and ‘was coming to be’",
+                "fr": "“il était”, “il est devenu” et “il devenait”",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 888,
+                "el": "χρόνος",
+                "la": "tempus",
+                "de": "Zeit",
+                "en": "Time",
+                "fr": "temps / longtemps / durée",
+                "it": "tempo / epoca",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 887,
+                "el": "ὕστερος",
+                "la": "/",
+                "de": "später",
+                "en": "latter / last / in after time / later than / after",
+                "fr": "ultérieurement / après / plus tard / suite",
+                "it": "seguito / successivo / dopo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 886,
+                "el": "Πρεσβύτερος",
+                "la": "senior",
+                "de": "älter / älteste",
+                "en": "eldest / most august / most honoured",
+                "fr": "plus vieux / plus ancien",
+                "it": "più vecchio / più antico",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 885,
+                "el": "ποτέ",
+                "la": "/",
+                "de": "einst / jemals / niemals / irgendwann / einmal",
+                "en": "at some time or other / at some time / at any time / ever",
+                "fr": "jamais / jadis / un jour / il y a longtemps",
+                "it": "mai / un tempo / una volta",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 884,
+                "el": "νύξ",
+                "la": "nox",
+                "de": "Nacht",
+                "en": "nigth",
+                "fr": "nuit",
+                "it": "notte",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 883,
+                "el": "νέος",
+                "la": "juvenis",
+                "de": "junge, neu",
+                "en": "young / youthful / new / afresh / newly / lately / just / just now/",
+                "fr": "jeune / nouveau / de formation récente",
+                "it": "giovane / nuovo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 882,
+                "el": "μένω",
+                "la": "maneo",
+                "de": "bleiben / verharren",
+                "en": "remain/ stay / to continue to exist / remain / last / persist / continue to live / wait for / await",
+                "fr": "rester / demeurer / se maintenir",
+                "it": "rimanere (fermo, immobile), permanere",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 881,
+                "el": "μείς",
+                "la": "mensis",
+                "de": "Monat",
+                "en": "month",
+                "fr": "mois",
+                "it": "mese",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 880,
+                "el": "καιρός",
+                "la": "/",
+                "de": "zum gegenwärtigen Zeitpunkt (so schnell keine passende Gelegenheit geben)",
+                "en": "exact or critical time / season / opportunity",
+                "fr": "le moment opportun",
+                "it": "momento opportuno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 879,
+                "el": "ἡμέρα",
+                "la": "dies",
+                "de": "Tag",
+                "en": "day",
+                "fr": "jour",
+                "it": "giorno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 878,
+                "el": "ἔτος",
+                "la": "anni",
+                "de": "jahre",
+                "en": "years",
+                "fr": "ans / année",
+                "it": "anno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 877,
+                "el": "ἔσχατος",
+                "la": "/",
+                "de": "äußersten / Ende",
+                "en": "to the end / for the last time",
+                "fr": "extremités / dernier",
+                "it": "estremità / ultimo",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 876,
+                "el": "*ἐξαίφνης",
+                "la": "/",
+                "de": "augenblick",
+                "en": "instant",
+                "fr": "/",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 875,
+                "el": "ἕνος",
+                "la": "/",
+                "de": "/",
+                "en": "the day after tomorrow",
+                "fr": "/",
+                "it": "/",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 874,
+                "el": "ἐνιαυτός",
+                "la": "annus",
+                "de": "Jahr",
+                "en": "a cycle /period / a year",
+                "fr": "année",
+                "it": "anno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 872,
+                "el": "διαιώνιος",
+                "la": "aeternus",
+                "de": "ewigen",
+                "en": "everlasting",
+                "fr": "éternel",
+                "it": "eterno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 871,
+                "el": "αὖθις",
+                "la": "/",
+                "de": "wiederum / noch einmal / wieder",
+                "en": "again / afresh / anew",
+                "fr": "une autre fois /de nouveau / derechef / plus tard",
+                "it": "di nuovo / ancora una volta",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 870,
+                "el": "ἄρχω",
+                "la": "/",
+                "de": "beginnen, beherrschen",
+                "en": "to begin / make a beginning",
+                "fr": "commencer, regner, dominer",
+                "it": "cominciare, dominare",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 869,
+                "el": "ἅμα",
+                "la": "/",
+                "de": "zugleich, gleichzeitig, gleichermaβen",
+                "en": "at once / at the same time",
+                "fr": "à la fois / tout à la fois /en même temps / simultanément",
+                "it": "allo stesso tempo / contemporaneamente / insieme /sia..sia",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 867,
+                "el": "αἰώνιος",
+                "la": "aevum / aeternus / sepiternus",
+                "de": "ewig",
+                "en": "perpetual / eternal / everlasting",
+                "fr": "éternel / éternité",
+                "it": "eterno / eternità",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 866,
+                "el": "ἀΐδιος",
+                "la": "aeternus / sepiternus",
+                "de": "Ewig, ewig",
+                "en": "everlasting / eternal",
+                "fr": "éternel",
+                "it": "eterno",
+                "owner": "maria.laura"
+            },
+            {
+                "guid": 865,
+                "el": "ἀεί",
+                "la": "semper",
+                "de": "immer, jeweils, ewig, ständig",
+                "en": "ever / always",
+                "fr": "toujours, sans cesse",
+                "it": "sempre, continuamente",
+                "owner": "maria.laura"
+            }
+        ]
+    }
+}

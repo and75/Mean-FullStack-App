@@ -1,0 +1,34 @@
+
+
+  <mat-card class="mt-3">
+    <mat-card-header style="flex:auto">
+        <div mat-card-avatar style="width: 25px;">
+            <mat-icon style="font-size: 30px; color:#656565fa;">analytics</mat-icon>
+        </div>
+        <mat-card-title style="font-size: 14px; padding-top: 3px;">App content report</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <section class="py-lg-3 px-lg-4">
+            <div>
+                <div>
+                  <div class="chart">
+                    <canvas baseChart
+                            [data]="pieChartData"
+                            [type]="pieChartType"
+                            [options]="pieChartOptions"
+                            [plugins]="pieChartPlugins">
+                    </canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- div class="button-row">
+                <button mat-button mat-raised-button color="primary" (click)="toggleLegend()">Toggle Legend</button>
+                <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
+                <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
+                <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
+              </div -->
+        </section>
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+</mat-card>

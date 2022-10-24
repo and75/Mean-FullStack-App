@@ -28,7 +28,7 @@ export class FileViewerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges():void{
-    if(this.data && !this.fileData){
+    if(this.data!==undefined && !this.fileData){
       this.download(this.data);
     }
   }
@@ -48,24 +48,24 @@ export class FileViewerComponent implements OnInit, OnChanges, OnDestroy {
   download(data:any){
     this.subscriptions.push(this.service.driveDownload(data._id).subscribe(
       (event: HttpEvent<any>) => {
-        //console.log(event);
+  
         switch (event.type) {
           case HttpEventType.Sent:
-            console.log('Request has been made!');
+            //console.log('Request has been made!');
             break;
           case HttpEventType.ResponseHeader:
-            console.log('Response header has been received!');
+            //console.log('Response header has been received!');
             break;
           case HttpEventType.DownloadProgress:
             this.progress = Math.round(event.loaded / this.data.size * 100);
-            console.log(`Dowloaded .. ${this.progress}%`);
+            //console.log(`Dowloaded .. ${this.progress}%`);
             break;
           case HttpEventType.Response:
             //console.log('User successfully created!', event.body);
             setTimeout(() => {
               this.progress = 0;
               this.fileData  = event.body;
-              console.log(this.fileData);
+              //console.log(this.fileData);
             }, 1500);
         }
       }   

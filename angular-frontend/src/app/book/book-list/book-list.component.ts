@@ -47,7 +47,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
 
   getData() {
     this.bookService.getBooks().subscribe((res:any) => {
-      console.log(res);
       if (res.succes == true) {
         this.book = res.payload.data;
         this.dataSource = new MatTableDataSource(this.book);
@@ -70,10 +69,9 @@ export class BookListComponent implements OnInit, AfterViewInit {
     addDialog.afterClosed().subscribe(result => {
       if (result) {
         this.bookService.addBook(result.form).subscribe(res => {
-          console.log(res);
           if (res.success) {
             this.getData();
-            this.alertService.success(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
+            this.alertService.success(res.mess, {'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
           } else {
             this.alertService.error(res.mess, { 'keepAfterRouteChange': false, 'autoClose': true, 'spinner': false })
           }
@@ -101,7 +99,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
   }
 
   delete(row: any) {
-    console.log(row._id);
     const deleteDialog = this.dialog.open(ConfirmDialogComponent, {
       data: `Are you sure you want to delete the user: ${row.firstName} ${row.lastName}?`
     });
@@ -120,7 +117,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
   }
 
   uploadPDF(row){
-    console.log(row._id);
     const uploadDialog = this.dialog.open(FileUploadComponent, {
       data: {
         type:'Book',

@@ -10,7 +10,9 @@ import { TagModule } from './tag/tag.module';
 import { BookmarkModule } from './bookmark/bookmark.module';
 import { UserModule } from './user/user.module';
 import { BookModule } from './book/book.module';
+import { AuthorModule } from './author/author.module';
 import { VocabularyModule } from './vocabulary/vocabulary.module';
+import { StatisticModule } from './statistic/statistic.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,9 +40,11 @@ import { DriveModule } from './drive/drive.module';
     AuthenticationModule,
     TagModule,
     BookmarkModule,
+    AuthorModule,
     BookModule,
     VocabularyModule,
     DriveModule,
+    StatisticModule,
     DaschboardModule,
     UserModule,
     AppRoutingModule,

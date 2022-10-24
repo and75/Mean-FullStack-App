@@ -4,25 +4,24 @@
         <div class="col-lg-2">
             <app-sidemenu></app-sidemenu>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-6" *ngIf="data">
             <div class="row">
                 <div clas="col-lg-6">
                     <mat-card class="member-detail-card">
                         <mat-card-header>
-                            <div mat-card-avatar>
-                                <mat-icon style="font-size: 47px;">person</mat-icon>
+                            <div mat-card-avatar  style="margin: 0 30px 0 0;">
+                                <mat-icon style="font-size: 70px;">person</mat-icon>
                             </div>
-                            <mat-card-title>Members</mat-card-title>
-                            <mat-card-subtitle>All registered users</mat-card-subtitle>
+                            <mat-card-title>{{data.firstName}} {{data.lastName}}</mat-card-title>
+                            <mat-card-subtitle><b>{{data.role}}</b> / {{data.email}} / {{data.istitution}}</mat-card-subtitle>
                         </mat-card-header>
-
-                        <mat-card-content>
-
+                        <mat-card-content *ngIf="data.presentation">
+                            <mat-divider class="" ></mat-divider>
+                            <div class="px-3 py-3">{{data.presentation}}</div>
                         </mat-card-content>
-                        
                     </mat-card>
+                    <app-activity-view [filter]="filterActivity" [subject]="data._id" [limit]="10"></app-activity-view>
                 </div>
-                <div clas="col-lg-6"></div>
             </div>
         </div>
     </div>

@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const tagStore = require('./../lib/core.lib');
 const { update } = require('./customer.model');
+const digitalSourceSchema = mongoose.Schema({
+    label:{
+        type:String,
+        required:false
+    },
+    url:{
+        type:String,
+        required:false
+    }
+})
 const editionSchema = mongoose.Schema({
     century : {
         type: String,
@@ -27,8 +37,13 @@ const bookSchema = mongoose.Schema({
     },
     author: {
         type: String,
-        required: true
+        required: false
     },
+    authors: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "author",
+        required: true
+    }],
     pages:{
         type:Number,
         required:true
@@ -46,7 +61,6 @@ const bookSchema = mongoose.Schema({
     reference : {
         type: String,
         required: false,
-        unique: true
     },
     notes: {
         type: String,
@@ -55,7 +69,13 @@ const bookSchema = mongoose.Schema({
     source: {
         type: String,
         required: false,
-    },   
+    },
+    digitalSource:digitalSourceSchema,
+    isPrimary: {
+        type: Boolean,
+        required: false,
+        default: false,
+    },    
     pdf: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "drive",
@@ -95,7 +115,8 @@ const bookSchema = mongoose.Schema({
         required:false
     }],
     tags:[{
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'tags',
         required:false
     }]
 });

@@ -90,7 +90,6 @@ export class UserFormComponent implements OnInit, OnChanges {
     this.submitted = true;
     console.log(this.userForm, this.userForm.status, this.update);
     if (this.userForm.status == 'VALID') {
-      console.log(this.userForm.status);
       this.dialogRef.close(
         {
           data: this.data,

@@ -22,6 +22,10 @@ const tagSchema = mongoose.Schema({
         ref: "tag",
         required: false
     }],
+    relationschip:[{
+        _id  :  {type: mongoose.Schema.Types.ObjectId},
+        model  : {type:String},
+    }],
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "customer",

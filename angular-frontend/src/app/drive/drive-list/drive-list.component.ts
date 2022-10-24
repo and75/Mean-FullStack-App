@@ -50,7 +50,6 @@ export class DriveListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.driveService.getDrivers().subscribe((res: any) => {
         if (res.succes == true) {
           this.drive = res.payload.data;
-          console.log(this.drive);
           this.dataSource = new MatTableDataSource(this.drive);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -80,7 +79,6 @@ export class DriveListComponent implements OnInit, AfterViewInit, OnDestroy {
       data: mess
     });
     deleteDialog.afterClosed().subscribe(result => {
-      console.log('afterClosed',result);
       if (result === true) {
         this.driveService.deleteDrive(row._id).subscribe((res: any) => {
           if (res.succes) {

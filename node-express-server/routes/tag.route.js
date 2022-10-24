@@ -1,6 +1,13 @@
+/**
+ * Proteus-app
+ * Node/MongoDb/Angular/Angular Material - Stack
+ * by Andrea Porcella 2022
+ */
+
 const express = require('express');
 const router = express.Router();
 const Tag = require('../models/tag.model');
+const coreLib = require('./../lib/core.lib');
 const { autenticateToken } = require('../middleware/authJwt');
 
 
@@ -21,9 +28,9 @@ router.get('/find', autenticateToken, async (req, res, next) => {
         if (req.q) {
             query = '/' + req.term + '/i';
         }
-        const tags = await Tag.find(query).select('-_id label');
+        const tags = await Tag.find(query).select('label');
         const ret = tags.map(x => x.label).sort();
-        res.json({ succes: true, mess: "Found " + tags.length, payload: { data: ret } })
+        res.json({ succes: true, mess: "Found " + tags.length, payload: { data: tags } })
     } catch (err) {
         console.log(err);
     }
@@ -36,34 +43,18 @@ router.post('/add', postStuff, async (req, res, next) => {
     const tag = new Tag({
         label: req.body.label.toLowerCase(),
         accessId: req.body.accessId,
-        translations:req.body?.translations,
+        translations: req.body?.translations,
         created: dateNow,
         updated: dateNow,
         owner: req.owner._id,
     });
-    try {
-        const saved = await tag.save();
-        res.locals.tag = saved
-        res.json({ "success": true, mess: 'The tag was created successfully', payload: { data: saved } });
-    } catch (err) {
-        if (err.keyPattern?.email && err.code == "11000") {
-            res.status(401).json({ "success": false, mess: 'The email entered has already been used', payload: { error: err.code } });
-            return;
-        } else {
-            console.log('error', err);
-        }
-    }
-    next();
-}, async (req, res, next)=>{
-    /*console.log(res.locals.tag);
-    const tag = res.locals.tag;
-    const tags = res.locals.tag.translations;
-    if(tags && tags.length>0){
-        const find = await Tag.find({label : {$in:tags}});
-        if(find){
-            const update = await Tag.findOneAndUpdate({_id:tag._id}, {$set:{translationsIds:find}});
-        }
-    }*/
+    tag.save().then(savedDoc => {
+        return coreLib.registerActivity('created', savedDoc, 'tag', req.owner._id);
+    }).then(savedDoc => {
+        res.json({ succes: true, mess: 'The tag was created successfully', payload: { data: savedDoc } });
+    }).catch(err => {
+        res.json({ succes: false, mess: "Error creating tag data" + err, payload: { error: err } });
+    })
 });
 
 // retrieve an object for specific id
@@ -88,19 +79,20 @@ router.get('/find', autenticateToken, async (req, res) => {
 
 // update a specific document 
 router.patch('/:id', autenticateToken, async (req, res, next) => {
-    try {
         const dateNow = Date.now();
-        const updated = await Tag.updateOne({ _id: req.params.id }, {
-            $set: {
-                label: req.body.label.toLowerCase(),
-                translations: req.body.translations,
-                updated: dateNow,
-            }
+        const tag = await Tag.findById(req.params.id)
+        tag.label =  req.body.label.toLowerCase();
+        tag.translations =  req.body.translations;
+        tag.updated =  dateNow;
+       
+        tag.save().then(savedDoc => {
+            return coreLib.registerActivity('updated', savedDoc, 'tag', req.owner._id);
+        }).then(savedDoc => {
+            res.json({ "succes": true, mess: 'The tag was updated successfully', payload: { data: savedDoc } });
+        }).catch(err => {
+            console.log(err);
+            res.json({ "succes": false, mess: "Error updating data", payload: { error: err } });
         });
-        res.json({ succes: true, mess: "The tag has been successfully updated", payload: { data: updated } });
-    } catch (err) {
-        res.json({ succes: false, mess: "Error updating data", payload: { error: err } });
-    }
 });
 
 // delete specific document 

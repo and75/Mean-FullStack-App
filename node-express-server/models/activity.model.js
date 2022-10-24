@@ -38,9 +38,9 @@ const activitySchema = mongoose.Schema({
         default:"1"
     },
     enable: {
-        type: Boolean,
-        required: false,
-        default: true,
+        type:Boolean,
+        required:false,
+        default:true
     }
 });
 

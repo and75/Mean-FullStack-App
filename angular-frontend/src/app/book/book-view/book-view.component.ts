@@ -6,7 +6,7 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/_models/book';
 import { BookService } from '../book.service';
 
@@ -33,7 +33,6 @@ export class BookViewComponent implements OnInit, OnDestroy {
   }
 
   public hideOtherPDFs(): void {
-    console.log('Hiding');
     this.visible[0] = false;
     this.visible[1] = false;
   }
@@ -44,10 +43,9 @@ export class BookViewComponent implements OnInit, OnDestroy {
     private service:BookService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Post detail');
+    this.titleService.setTitle('Book detail');
     this.route.paramMap.subscribe(params => {
       this.contentID = this.route.snapshot.params['id'];
-      console.log(this.contentID)
       if(this.contentID){
         this.getContent();
       } 
@@ -60,7 +58,6 @@ export class BookViewComponent implements OnInit, OnDestroy {
 
   getContent(){
     this.service.getBook(this.contentID).subscribe((res):any=>{
-      console.log(res);
       if (res.succes == true) {
         this.data = new Book(res.payload.data);
         console.log('Book view', this.data)

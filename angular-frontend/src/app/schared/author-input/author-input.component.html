@@ -1,0 +1,35 @@
+<!--
+ * Proteus-app
+ * Node/MongoDb/Angular/Angular Material - Stack
+ * by Andrea Porcella 2022
+-->
+
+<mat-form-field class="w-100 mb-2 ng-invalid" appearance="fill">
+  <mat-label>Authors</mat-label>
+  <mat-chip-list #chipList aria-label="Author selection" multiple [formControl]="chipsFormControl">
+    <mat-chip *ngFor="let author of authors" (removed)="remove(author)" selected  color="accent" [value]="author.fullname">
+      {{author.fullname}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input 
+    class="mb-2" 
+    #authorInput 
+    placeholder="Find/add new authors..."
+    [formControl]="formControl" 
+    [matChipInputFor]="chipList" 
+    [matAutocomplete]="auto" 
+    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+    (matChipInputTokenEnd)="add($event)" 
+    >
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let author of filtered | async" [value]="author">
+      {{author.fullname}}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-error *ngIf="chipsFormControl.hasError('required')">
+    Authors is <strong>required</strong>
+  </mat-error>
+</mat-form-field>

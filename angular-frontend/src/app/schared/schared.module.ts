@@ -27,15 +27,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatBadgeModule} from '@angular/material/badge';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { CustomValidators } from './../_providers/CustomValidators';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { FileUploadComponent } from './file-upload/file-upload.component'
 import { SharedService } from './shared.service';
-import { TagsComponent } from './tags/tags.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { CommentViewComponent } from './comment-view/comment-view.component';
 import { ActivityViewComponent } from './activity-view/activity-view.component';
+import { TagInputComponent } from './tag-input/tag-input.component';
+import { AuthorInputComponent } from './author-input/author-input.component';
+import { BookmarkInputComponent } from './bookmark-input/bookmark-input.component';
+import { OwnerBlockComponent } from './owner-block/owner-block.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +48,13 @@ import { ActivityViewComponent } from './activity-view/activity-view.component';
     SidemenuComponent,
     ConfirmDialogComponent,
     FileUploadComponent,
-    TagsComponent,
     FileViewerComponent,
     CommentViewComponent,
-    ActivityViewComponent
+    ActivityViewComponent,
+    TagInputComponent,
+    AuthorInputComponent,
+    BookmarkInputComponent,
+    OwnerBlockComponent
   ],
   imports: [
     CommonModule,
@@ -73,6 +81,8 @@ import { ActivityViewComponent } from './activity-view/activity-view.component';
     MatChipsModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    MatBadgeModule,
     RouterModule
   ],
   exports: [
@@ -81,8 +91,12 @@ import { ActivityViewComponent } from './activity-view/activity-view.component';
     ConfirmDialogComponent,
     FileUploadComponent,
     FileViewerComponent,
-    TagsComponent,
+    TagInputComponent,
+    AuthorInputComponent,
+    BookmarkInputComponent,
     CommentViewComponent,
+    ActivityViewComponent,
+    OwnerBlockComponent,
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
@@ -103,7 +117,10 @@ import { ActivityViewComponent } from './activity-view/activity-view.component';
     MatListModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatBadgeModule
+
   ],
   providers: [CustomValidators, SharedService]
 })

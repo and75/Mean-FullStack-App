@@ -18,4 +18,8 @@ export class DaschboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  filterActivity = {
+    subject:""
+  }
+
 }

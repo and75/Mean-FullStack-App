@@ -1,0 +1,40 @@
+<div class="row pt-3" *ngIf="data">
+    <div class="col-xl-9">
+        <div class="row small">
+            <div class="col-auto">
+                <div class="d-flex align-items-center">
+                    <span class="d-inline-block me-2">Created </span>
+                    <b>{{data.created | date:'MMM d, y, h:mm:ss a' }} </b>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="d-flex align-items-center">
+                    <span class="d-inline-block me-2">By</span>
+                    <a routerLink="/members/view/{{data.owner._id}}">
+                        <b>{{data.owner.firstName}} {{data.owner.lastName}}</b>
+                    </a>    
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="d-flex align-items-center">
+                    <span class="d-inline-block me-2">Last update </span>
+                    <b>{{data.updated | date:'MMM d, y, h:mm:ss a'}} </b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <!-- div class="d-flex flex-row-reverse">
+            <button mat-icon-button matBadge="" matBadgePosition="before" matBadgeColor="primary">
+                <mat-icon>sentiment_very_dissatisfied</mat-icon>
+            </button>
+            <button mat-icon-button matBadge="" matBadgePosition="before" matBadgeColor="primary">
+                <mat-icon>sentiment_satisfied</mat-icon>
+            </button>
+            <button mat-icon-button matBadge="" matBadgePosition="before" matBadgeColor="primary">
+                <mat-icon>sentiment_very_satisfied</mat-icon>
+            </button>
+        </div -->
+    </div>
+
+</div>
