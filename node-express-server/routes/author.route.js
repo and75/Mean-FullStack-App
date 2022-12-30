@@ -10,7 +10,7 @@ const Author = require('../models/author.model');
 const { autenticateToken } = require('../middleware/authJwt');
 const { now } = require('../db');
 const coreLib = require('./../lib/core.lib');
-const { authorStore } = require('./../lib/authorStore')
+const { AuthorStoreClass } = require('./../lib/authorStore')
 
 
 // retrieve all records from database
@@ -40,17 +40,15 @@ router.post('/add', autenticateToken, async (req, res) => {
     });
     author.save()
         .then(savedDoc => {
-            coreLib.tagStore(req.body.tags, req.owner._id, savedDoc._id, 'author').then(tags => {
-                savedDoc.tags = tags;
-                return savedDoc.save()
-            })
+            return coreLib.tagStore(req.body.tags, req.owner._id, savedDoc, 'author', true);
         })
         .then(savedDoc => {
-            return coreLib.registerActivity(savedDoc, 'author', 'updated', req.owner._id)
+            return coreLib.registerActivity('created', savedDoc, 'author',  req.owner._id)
         })
         .then(savedDoc => {
             res.json({ "success": true, mess: 'The author was created successfully', payload: { data: savedDoc } });
         }).catch((err) => {
+            console.log(err);
             res.json({ succes: false, mess: "Error creating Author \n" + err, payload: { error: err } });
         });
 
@@ -91,19 +89,18 @@ router.patch('/:id', autenticateToken, async (req, res) => {
 
 // delete specific document 
 router.delete('/:id', autenticateToken, async (req, res) => {
-        authorStore.deleteOne(req.params.id).
-        then(accRes=>{
-            return authorStore.cleanBookRef( req.params.id)
+    const authorStore = new AuthorStoreClass();
+    authorStore.deleteOne(req.params.id)
+        .then(actRes=>{
+            return authorStore.cleanBookRef(actRes);
         })
-        .then(accRes=>{
-            return coreLib.cleanActivity(req.params.id);
-        })
-        .then(accRes=>{
-            res.json({ succes: true, mess: "The author are deleted!", payload: { data: accRes } });
+        .then(actRes=>{
+            res.json({ succes: true, mess: "The author are deleted!", payload: { data: actRes } });
         })
         .catch(err=>{
+            console.log(err);
             res.json({ succes: false, mess: "Error while suppressing author", payload: { error: err } });
-        });
+        })
 });
 
 module.exports = router;

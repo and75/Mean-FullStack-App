@@ -62,9 +62,9 @@ class AuthorStoreClass {
 
     deleteOne(id){
         return new Promise(async(resolve, reject)=>{
-            Author.deleteOne({ _id: req.params.id })
+            Author.deleteOne({ _id: id })
             .then(res=>{
-                resolve(res);
+                resolve(id);
             })
             .catch(err=>{
                 reject(err);
@@ -92,10 +92,11 @@ class AuthorStoreClass {
     cleanBookRef(id){
         return new Promise(async (resolve, reject)=>{
             //delete Book Ref
-            const cleanBook = await Book.updateMany({authors: req.params.deleteUid}, {
-                $pullAll: { authors: req.params.deleteUid}
+            const cleanBook = await Book.updateMany({authors: id}, {
+                $pullAll: { authors: [id]}
             }).then(data => {
-                resolve(data);
+                console.log(data);
+                resolve(id);
             })
             .catch(err => {
                 reject(err);

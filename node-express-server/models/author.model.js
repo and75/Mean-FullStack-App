@@ -7,7 +7,7 @@ const dateSchema = mongoose.Schema({
     },
     bC: {
         type:Boolean,
-        required:true,
+        required:false,
         default:false,        
     },
     year : {
